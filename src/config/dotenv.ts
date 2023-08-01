@@ -10,4 +10,4 @@ if (!parsed) {
   throw new Error('Пустой файл .env');
 }
 
-export const { BOT_TOKEN, MONGODB, MY_TELEGRAM_ID } = parsed;
+export const { BOT_TOKEN, MONGODB, OWNER_CHANNEL_ID, CHANNEL_ID, DISCUSSION_GROUP_ID } = parsed;
