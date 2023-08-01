@@ -1,15 +1,15 @@
 {
   "name": "botmeetup_v3",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "version": "3.0.0",
+  "description": "switching to typescript",
+  "main": "botmeetup_v3.js",
   "type": "module",
   "scripts": {
     "lint": "npx eslint ./src",
-    "lint:fix": "npx eslint ./src --fix",
+    "fix": "npx eslint ./src --fix",
     "dev": "npx nodemon",
     "build": "rimraf build && tsc",
-    "start": "npm run build && node build/main.js",
+    "start": "npm run build && node build/botmeetup_v3.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
