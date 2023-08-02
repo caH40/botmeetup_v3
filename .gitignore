@@ -1,3 +1,6 @@
 /node_modules
 .env
 /build
+
+# логирование ошибок
+/src/logs/error/*.log

@@ -4,6 +4,7 @@ import { CHANNEL_ID } from '../config/dotenv.js';
 import { IBotContext } from '../context/context.interface.js';
 import { inviteJoinToChannel } from '../reply/invite-join-channel.js';
 import { sendUnknownError } from '../reply/unknown-error.js';
+import { errorHandler } from '../errors/error.js';
 
 // проверка состоит ли пользователь бота в соответствующем канале объявлений,
 // если нет то бот недоступен
@@ -15,7 +16,8 @@ export async function checkMember(ctx: IBotContext, next: () => void) {
     // юзер id в телеграмм автора сообщения
     const userId = ctx.message?.from.id ?? telegramId;
 
-    // если не получен id пользователя то выход из middleware
+    // если не получен id пользователя или пришла переадресация с id телеграма,
+    // то выход из middleware
     if (userId === telegramId) {
       await sendUnknownError(ctx);
       return;
@@ -36,6 +38,6 @@ export async function checkMember(ctx: IBotContext, next: () => void) {
 
     return;
   } catch (error) {
-    console.log(error);
+    errorHandler(error);
   }
 }
