@@ -10,4 +10,8 @@ if (!parsed) {
   throw new Error('Пустой файл .env');
 }
 
-export const { BOT_TOKEN, MONGODB, OWNER_CHANNEL_ID, CHANNEL_ID, DISCUSSION_GROUP_ID } = parsed;
+// ID используются как тип number
+export const CHANNEL_ID = +parsed.CHANNEL_ID;
+export const OWNER_CHANNEL_ID = +parsed.OWNER_CHANNEL_ID;
+
+export const { BOT_TOKEN, MONGODB } = parsed;
