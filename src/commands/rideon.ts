@@ -1,6 +1,13 @@
 import { Telegraf } from 'telegraf';
-import { IBotContext } from '../context/context.interface.js';
 
+import { IBotContext } from '../interface/context.interface.js';
+import { rideonMainMenu } from '../menu/rideon/main.js';
+import { initSession } from '../modules/session.js';
+
+// обработка команды /rideon
 export const commandRideOn = (bot: Telegraf<IBotContext>): void => {
-  bot.command('rideon', (ctx: IBotContext) => ctx.reply('get rideon'));
+  bot.command('rideon', async (ctx: IBotContext) => {
+    await initSession(ctx);
+    await rideonMainMenu(ctx);
+  });
 };

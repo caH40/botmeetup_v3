@@ -1,0 +1,10 @@
+import { InlineKeyboardMarkup } from 'telegraf/types';
+
+// описание сессии
+export interface SessionData {
+  channelName: string;
+  channelId: number;
+  linkedChatId: number | undefined;
+  messageDel: [];
+  start: InlineKeyboardMarkup;
+}

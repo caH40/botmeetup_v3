@@ -1,10 +1,12 @@
 import { Telegraf, session } from 'telegraf';
 
 import { BOT_TOKEN } from './config/dotenv.js';
-import { IBotContext } from './context/context.interface.js';
+import { IBotContext } from './interface/context.interface.js';
 import { commands } from './commands/commands.js';
 import { initMongodb } from './database/mongodb.js';
 import { checkMember } from './middleware/member.js';
+import { getActionDate } from './menu/rideon/action/date.js';
+import { actions } from './actions/actions.js';
 
 // запуск mongoose подключения к БД
 initMongodb();
@@ -17,6 +19,11 @@ bot.use(checkMember);
 for (const command of commands(bot)) {
   command;
 }
+for (const action of actions(bot)) {
+  action;
+}
+// bot.on('callback_query', (ctx) => console.log(ctx.callbackQuery));
+getActionDate(bot);
 
 bot.launch();
 // Enable graceful stop

@@ -1,6 +1,6 @@
 import { Telegraf } from 'telegraf';
 
-import { IBotContext } from '../context/context.interface.js';
+import { IBotContext } from '../interface/context.interface.js';
 import { sendReply } from '../reply/reply.js';
 import { commandsMessage } from '../assets/command.js';
 

@@ -1,10 +1,6 @@
 import { Context } from 'telegraf';
 
-export interface SessionData {
-  channelName: string;
-  channelId: number;
-  linkedChatId: number | undefined;
-}
+import { SessionData } from './session.interface.js';
 
 // создание интерфейса для контекста телеграфа
 export interface IBotContext extends Context {

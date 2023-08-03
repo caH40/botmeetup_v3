@@ -1,5 +1,5 @@
 import { Telegraf } from 'telegraf';
-import { IBotContext } from '../context/context.interface.js';
+import { IBotContext } from '../interface/context.interface.js';
 
 import { commandRideOn } from './rideon.js';
 import { commandStart } from './start.js';

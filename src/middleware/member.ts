@@ -1,7 +1,7 @@
 import { Chat } from 'telegraf/types';
 
 import { CHANNEL_ID } from '../config/dotenv.js';
-import { IBotContext } from '../context/context.interface.js';
+import { IBotContext } from '../interface/context.interface.js';
 import { inviteJoinToChannel } from '../reply/invite-join-channel.js';
 import { sendUnknownError } from '../reply/unknown-error.js';
 import { errorHandler } from '../errors/error.js';
@@ -11,8 +11,13 @@ import { errorHandler } from '../errors/error.js';
 
 export async function checkMember(ctx: IBotContext, next: () => void) {
   try {
+    // если приходит контекст от нажатой кнопки ctx.callbackQuery,
+    // значит пользователь уже прошел проверку
+    if (ctx.callbackQuery) return next();
+
     // id самого телеграмма
     const telegramId = 777000;
+
     // юзер id в телеграмм автора сообщения
     const userId = ctx.message?.from.id ?? telegramId;
 
