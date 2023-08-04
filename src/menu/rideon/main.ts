@@ -18,11 +18,11 @@ export async function rideonMainMenu(ctx: IBotContext) {
     //при замене значения из модуля на keyboardMain, смешиваются ответы из разных сессий!!
     if (ctx.session) {
       ctx.session.messageDel = [];
-      ctx.session.start = keyboardMain;
+      ctx.session.start = keyboardMain();
     }
 
     // отправка сообщения с блоком кнопок формирования заезда
-    await ctx.reply('Выберите блок заполнения', { reply_markup: keyboardMain });
+    await ctx.reply('Выберите блок заполнения', { reply_markup: keyboardMain() });
 
     // удаление предыдущего сообщения (команды, которая вызвала блок кнопок)
     await ctx.deleteMessage(messageId).catch((error) => errorHandler(error));

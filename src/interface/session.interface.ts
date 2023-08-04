@@ -8,4 +8,5 @@ export interface SessionData {
   messageDel: [];
   start: InlineKeyboardMarkup;
   dateStart: string;
+  time: string;
 }
