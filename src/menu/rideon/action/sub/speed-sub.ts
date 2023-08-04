@@ -1,22 +1,21 @@
 import { Telegraf } from 'telegraf';
-
 import { IBotContext } from '../../../../interface/context.interface.js';
 import { mainMenu } from '../../../../modules/mainmenu.js';
 import { regular } from '../../../../common/constants.js';
 import { sendRestart } from '../../../../reply/restart.js';
 
-// обработка нажатия кнопки "Дата заезда"
-export const getActionDateStart = (bot: Telegraf<IBotContext>): void => {
-  bot.action(regular.dateStart, async (ctx) => {
+// обработка нажатия кнопки "Средняя скорость заезда"
+export const getActionSpeeds = (bot: Telegraf<IBotContext>): void => {
+  bot.action(regular.speedStart, async (ctx) => {
     // callback_query.data из нажатой инлайн-кнопки
-    const dateStart = ctx.match[0].replace('dateStart_', '');
+    const speed = ctx.match[0].replace('speedStart_', '');
 
     // проверка инициализации сессии
     if (ctx.session) {
-      // сохранение даты старта в сессию
-      ctx.session.dateStart = dateStart;
+      // сохранение средней скорости заезда в сессию
+      ctx.session.speed = speed;
       // изменение кнопки (добавление отметки о заполнении)
-      ctx.session.start.inline_keyboard[0][0].text = 'Дата заезда ✔️';
+      ctx.session.start.inline_keyboard[2][1].text = 'Средняя скорость ✔️';
     } else {
       // отправка сообщения о необходимости перезапуска сессии
       await sendRestart(ctx);

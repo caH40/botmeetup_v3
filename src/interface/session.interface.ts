@@ -10,4 +10,5 @@ export interface SessionData {
   dateStart: string;
   time: string;
   distance: string;
+  speed: string;
 }

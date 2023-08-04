@@ -4,11 +4,11 @@ import { mainMenu } from '../../../../modules/mainmenu.js';
 import { regular } from '../../../../common/constants.js';
 import { sendRestart } from '../../../../reply/restart.js';
 
-// обработка нажатия кнопки "Дистанция заезда" в главном меню
+// обработка нажатия кнопки "Дистанция заезда"
 export const getActionDistances = (bot: Telegraf<IBotContext>): void => {
   bot.action(regular.distanceStart, async (ctx) => {
     // callback_query.data из нажатой инлайн-кнопки
-    const distance = ctx.match[0].replace('distanceStart', '');
+    const distance = ctx.match[0].replace('distanceStart_', '');
 
     // проверка инициализации сессии
     if (ctx.session) {
