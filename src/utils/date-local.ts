@@ -16,7 +16,7 @@ export function getTimerLocal(date: number, timeFormat: TypeTimeFormat, long?: s
   });
   const formatterDDMMYY = new Intl.DateTimeFormat('ru', {
     year: '2-digit',
-    month: long ? 'long' : '2-digit',
+    month: '2-digit',
     day: '2-digit',
     weekday: long ? 'long' : undefined,
   });
