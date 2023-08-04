@@ -7,4 +7,5 @@ export interface SessionData {
   linkedChatId: number | undefined;
   messageDel: [];
   start: InlineKeyboardMarkup;
+  dateStart: string;
 }
