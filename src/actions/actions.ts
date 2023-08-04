@@ -12,8 +12,9 @@ import { getActionDescription } from '../menu/rideon/action/main/description.js'
 import { getActionSummary } from '../menu/rideon/action/main/summary.js';
 import { getActionPattern } from '../menu/rideon/action/main/pattern.js';
 
-import { getKeyboardTime } from '../menu/rideon/action/sub/time-sub.js';
+import { getActionsTimes } from '../menu/rideon/action/sub/time-sub.js';
 import { getActionDateStart } from '../menu/rideon/action/sub/date-start.js';
+import { getActionDistances } from '../menu/rideon/action/sub/distance-sub.js';
 
 // action для главного меню rideon
 const getActionRideonMain = (bot: Telegraf<IBotContext>): void[] => [
@@ -32,7 +33,8 @@ const getActionRideonMain = (bot: Telegraf<IBotContext>): void[] => [
 // action для подменю rideon
 const getActionRideonSub = (bot: Telegraf<IBotContext>): void[] => [
   getActionDateStart(bot),
-  getKeyboardTime(bot),
+  getActionsTimes(bot),
+  getActionDistances(bot),
 ];
 
 // объединение всех action в один массив

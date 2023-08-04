@@ -9,4 +9,5 @@ export interface SessionData {
   start: InlineKeyboardMarkup;
   dateStart: string;
   time: string;
+  distance: string;
 }
