@@ -15,6 +15,7 @@ import { getActionPattern } from '../menu/rideon/action/main/pattern.js';
 import { getActionsTimes } from '../menu/rideon/action/sub/time-sub.js';
 import { getActionDateStart } from '../menu/rideon/action/sub/date-start.js';
 import { getActionDistances } from '../menu/rideon/action/sub/distance-sub.js';
+import { getActionSpeeds } from '../menu/rideon/action/sub/speed-sub.js';
 
 // action для главного меню rideon
 const getActionRideonMain = (bot: Telegraf<IBotContext>): void[] => [
@@ -35,6 +36,7 @@ const getActionRideonSub = (bot: Telegraf<IBotContext>): void[] => [
   getActionDateStart(bot),
   getActionsTimes(bot),
   getActionDistances(bot),
+  getActionSpeeds(bot),
 ];
 
 // объединение всех action в один массив

@@ -4,7 +4,7 @@ import { mainMenu } from '../../../../modules/mainmenu.js';
 import { regular } from '../../../../common/constants.js';
 import { sendRestart } from '../../../../reply/restart.js';
 
-// обработка нажатия кнопки "Дата заезда" в главном меню
+// обработка нажатия кнопки "Дата заезда"
 export const getActionsTimes = (bot: Telegraf<IBotContext>): void => {
   bot.action(regular.timeStart, async (ctx) => {
     // callback_query.data из нажатой инлайн-кнопки
