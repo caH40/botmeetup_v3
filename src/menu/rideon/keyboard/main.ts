@@ -1,6 +1,6 @@
 import { InlineKeyboardMarkup } from 'telegraf/types';
 
-export const keyboardMain: InlineKeyboardMarkup = {
+export const keyboardMain = (): InlineKeyboardMarkup => ({
   inline_keyboard: [
     [
       { text: 'Дата заезда', callback_data: 'meetDate' },
@@ -21,4 +21,4 @@ export const keyboardMain: InlineKeyboardMarkup = {
     [{ text: 'Использовать ранее созданное объявление', callback_data: 'meetPattern' }],
     [{ text: 'Сводные данные по заезду', callback_data: 'meetSummary' }],
   ],
-};
+});

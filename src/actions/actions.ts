@@ -2,7 +2,6 @@ import { Telegraf } from 'telegraf';
 
 import { IBotContext } from '../interface/context.interface.js';
 import { getActionDate } from '../menu/rideon/action/main/date.js';
-import { getActionDateStart } from '../menu/rideon/action/date-start.js';
 import { getActionLocation } from '../menu/rideon/action/main/location.js';
 import { getActionTime } from '../menu/rideon/action/main/time.js';
 import { getActionWeather } from '../menu/rideon/action/main/weather.js';
@@ -12,6 +11,9 @@ import { getActionCover } from '../menu/rideon/action/main/cover.js';
 import { getActionDescription } from '../menu/rideon/action/main/description.js';
 import { getActionSummary } from '../menu/rideon/action/main/summary.js';
 import { getActionPattern } from '../menu/rideon/action/main/pattern.js';
+
+import { getKeyboardTime } from '../menu/rideon/action/sub/time-sub.js';
+import { getActionDateStart } from '../menu/rideon/action/sub/date-start.js';
 
 // action для главного меню rideon
 const getActionRideonMain = (bot: Telegraf<IBotContext>): void[] => [
@@ -28,7 +30,10 @@ const getActionRideonMain = (bot: Telegraf<IBotContext>): void[] => [
 ];
 
 // action для подменю rideon
-const getActionRideonSub = (bot: Telegraf<IBotContext>): void[] => [getActionDateStart(bot)];
+const getActionRideonSub = (bot: Telegraf<IBotContext>): void[] => [
+  getActionDateStart(bot),
+  getKeyboardTime(bot),
+];
 
 // объединение всех action в один массив
 export const actions = (bot: Telegraf<IBotContext>): void[] => [

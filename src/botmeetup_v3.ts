@@ -1,5 +1,5 @@
 import { Telegraf, session } from 'telegraf';
-import { callbackQuery } from 'telegraf/filters';
+// import { callbackQuery } from 'telegraf/filters';
 
 import { BOT_TOKEN } from './config/dotenv.js';
 import { IBotContext } from './interface/context.interface.js';

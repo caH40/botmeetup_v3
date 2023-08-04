@@ -13,8 +13,8 @@ export const getKeyboardDates = (): Markup.Markup<InlineKeyboardMarkup> => {
 
   for (let i = 0; i < daysQuantity; i = i + 2) {
     date.push([
-      Markup.button.callback(days[i], days[i]),
-      Markup.button.callback(days[i + 1], days[i + 1]),
+      Markup.button.callback(days[i], `dateStart_${days[i]}`),
+      Markup.button.callback(days[i + 1], `dateStart_${days[i + 1]}`),
     ]);
   }
   return Markup.inlineKeyboard(date);
