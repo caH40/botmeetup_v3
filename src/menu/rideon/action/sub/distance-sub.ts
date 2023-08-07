@@ -11,7 +11,7 @@ export const getActionDistances = (bot: Telegraf<IBotContext>): void => {
     const distance = ctx.match[0].replace('distanceStart_', '');
 
     // проверка инициализации сессии
-    if (ctx.session) {
+    if (ctx.session && ctx.session.start) {
       // сохранение дистанции заезда в сессию
       ctx.session.distance = distance;
       // изменение кнопки (добавление отметки о заполнении)

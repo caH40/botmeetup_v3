@@ -8,7 +8,7 @@ export const mainMenu = async (ctx: IBotContext) => {
   // если сессия инициализирована, то брать меню из сессии
   // если нет, то генерировать новое меню
   const getKeyboard = (): InlineKeyboardMarkup => {
-    if (ctx.session) {
+    if (ctx.session && ctx.session.start) {
       return ctx.session.start;
     } else {
       return keyboardMain();

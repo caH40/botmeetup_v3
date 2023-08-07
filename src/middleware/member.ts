@@ -11,7 +11,7 @@ import { errorHandler } from '../errors/error.js';
 
 export async function checkMember(ctx: IBotContext, next: () => void) {
   try {
-    // console.log(ctx.session);
+    console.log(ctx.session);
 
     // если приходит контекст от нажатой кнопки ctx.callbackQuery,
     // значит пользователь уже прошел проверку
