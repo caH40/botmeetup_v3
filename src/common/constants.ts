@@ -7,6 +7,8 @@ export const regular: IRegular = {
   timeStart: /timeStart_\d{1,2}:\d{2}/,
   distanceStart: /distanceStart_\d{1,4}.{2,3}/,
   speedStart: /speedStart_\d{1,2}км\/ч/,
+  // кнопка выбора города, где будет старт
+  locationStart: /mainLocation_.+/,
 };
 
 export const distanceSummary: string[] = [

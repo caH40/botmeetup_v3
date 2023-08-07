@@ -1,6 +1,11 @@
 import { Scenes } from 'telegraf';
+
 import { InlineKeyboardMarkup } from 'telegraf/types';
-import { MySceneSession } from './new.interface.js';
+
+export interface MySceneSession extends Scenes.SceneSessionData {
+  // will be available under `ctx.scene.session.mySceneSessionProp`
+  // mySceneSessionProp: number;
+}
 
 // описание сессии
 export interface SessionData extends Scenes.SceneSession<MySceneSession> {
@@ -13,6 +18,6 @@ export interface SessionData extends Scenes.SceneSession<MySceneSession> {
   time: string;
   distance: string;
   speed: string;
-
-  mySessionProp: number;
+  location: string;
+  locationWeather: string;
 }
