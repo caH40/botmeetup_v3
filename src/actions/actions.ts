@@ -7,7 +7,7 @@ import { getActionTime } from '../menu/rideon/action/main/time.js';
 import { getActionWeather } from '../menu/rideon/action/main/weather.js';
 import { getActionDistance } from '../menu/rideon/action/main/distance.js';
 import { getActionSpeed } from '../menu/rideon/action/main/speed.js';
-import { getActionCover } from '../menu/rideon/action/main/cover.js';
+import { getActionPicture } from '../menu/rideon/action/main/picture.js';
 import { getActionDescription } from '../menu/rideon/action/main/description.js';
 import { getActionSummary } from '../menu/rideon/action/main/summary.js';
 import { getActionPattern } from '../menu/rideon/action/main/pattern.js';
@@ -27,7 +27,7 @@ const getActionRideonMain = (bot: Telegraf<IBotContext>): void[] => [
   getActionWeather(bot),
   getActionDistance(bot),
   getActionSpeed(bot),
-  getActionCover(bot),
+  getActionPicture(bot),
   getActionDescription(bot),
   getActionPattern(bot),
   getActionSummary(bot),

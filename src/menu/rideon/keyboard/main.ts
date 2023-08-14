@@ -15,7 +15,7 @@ export const keyboardMain = (): InlineKeyboardMarkup => ({
       { text: 'Средняя скорость', callback_data: 'meetSpeed' },
     ],
     [
-      { text: 'Картинка', callback_data: 'meetCover' },
+      { text: 'Картинка', callback_data: 'meetPicture' },
       { text: 'Описание', callback_data: 'meetDescription' },
     ],
     [{ text: 'Использовать ранее созданное объявление', callback_data: 'meetPattern' }],

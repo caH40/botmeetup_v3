@@ -9,3 +9,7 @@ export interface ITextDescriptionScene {
   prevDescription: string;
   chooseBlock: string;
 }
+export interface ITextPictureScene {
+  greeting: string;
+  wrong: string;
+}
