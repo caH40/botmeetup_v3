@@ -20,6 +20,7 @@ export async function initSession(ctx: IBotContext) {
     ctx.session.channelId = CHANNEL_ID;
     ctx.session.channelName = title;
     ctx.session.linkedChatId = linked_chat_id;
+    ctx.session.messageDel = [];
   } catch (error) {
     errorHandler(error);
   }

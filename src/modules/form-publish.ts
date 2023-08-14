@@ -1,11 +1,12 @@
-import { posted } from '../common/posted.js';
 import { IBotContext } from '../interface/context.interface.js';
 import { Post } from '../model/Post.js';
+import { sendPosted } from '../reply/posted.js';
 import { formFinalPost } from './form-final.js';
 
 // публикация объявления в телеграм и сохранение в БД
 export const publishForm = async (ctx: IBotContext) => {
   const finalPost = formFinalPost(ctx);
+
   // если объявление уже есть в базе данных
   // const _idPost = ctx.session._id;
   // if (_idPost) {
@@ -33,15 +34,15 @@ export const publishForm = async (ctx: IBotContext) => {
 
   const { channelId, channelName, pictureId } = ctx.session;
 
+  // публикация поста в канале channelName
   const messageChannel = await ctx.telegram.sendPhoto(channelId, pictureId, {
     caption: finalPost,
     parse_mode: 'HTML',
   });
 
-  // сообщение о размещении объявления на канале
+  // сообщение об успешном размещении объявления в канале channelName
+  await sendPosted(ctx, channelName);
 
-  const postMessage = posted(channelName);
-  await ctx.reply(postMessage);
   //номер сообщения в канале
   const messageId = messageChannel.message_id;
 

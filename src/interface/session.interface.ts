@@ -12,7 +12,7 @@ export interface SessionData extends Scenes.SceneSession<MySceneSession> {
   channelName: string;
   channelId: number;
   linkedChatId: number | undefined;
-  messageDel: [];
+  messageDel: number[];
   start: InlineKeyboardMarkup | undefined;
   dateStart: string;
   time: string;

@@ -3,8 +3,10 @@ import { InlineKeyboardMarkup } from 'telegraf/types';
 import { errorHandler } from '../errors/error.js';
 import { IBotContext } from '../interface/context.interface.js';
 import { keyboardMain } from '../menu/rideon/keyboard/main.js';
+import { deleteMyMessage } from './message-delete.js';
 
 export const mainMenu = async (ctx: IBotContext, isNewMenu?: boolean) => {
+  await deleteMyMessage(ctx);
   // если сессия инициализирована, то брать меню из сессии
   // если нет, то генерировать новое меню
   const getKeyboard = (): InlineKeyboardMarkup => {
