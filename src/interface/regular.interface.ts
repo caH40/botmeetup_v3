@@ -4,4 +4,5 @@ export interface IRegular {
   distanceStart: RegExp;
   speedStart: RegExp;
   locationStart: RegExp;
+  locationWeatherStart: RegExp;
 }

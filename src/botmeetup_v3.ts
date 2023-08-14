@@ -9,13 +9,14 @@ import { initMongodb } from './database/mongodb.js';
 import { checkMember } from './middleware/member.js';
 import { actions } from './actions/actions.js';
 import { locationScene } from './menu/rideon/scene/location/location.scene.js';
+import { locationWeatherScene } from './menu/rideon/scene/location_weather/location_weather.scene.js';
 
 // запуск mongoose подключения к БД
 initMongodb();
 
 const bot = new Telegraf<IBotContext>(BOT_TOKEN);
 
-const stage = new Scenes.Stage<IBotContext>([locationScene]);
+const stage = new Scenes.Stage<IBotContext>([locationScene, locationWeatherScene]);
 
 bot.use(session());
 bot.use(checkMember);

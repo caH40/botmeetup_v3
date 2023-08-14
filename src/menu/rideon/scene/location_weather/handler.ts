@@ -2,17 +2,17 @@ import { IBotContext } from '../../../../interface/context.interface.js';
 import { ILocations } from '../../../../interface/model/locations.interface.js';
 import { errorHandler } from '../../../../errors/error.js';
 import { City } from '../../../../model/City.js';
-import { keyboardLocation } from './keyboard/location.keyboard.js';
+import { keyboardLocationWeather } from './keyboard/location_weather.keyboard.js';
 import { sceneLocationText as txt } from './text.js';
 import { sendReply } from '../../../../reply/reply.js';
 
 // обработка введенного текста в сцене Location
-export async function handlerSceneLocation(ctx: IBotContext, text: string) {
+export async function handlerSceneLocationWeather(ctx: IBotContext, text: string) {
   try {
     if (ctx.session && ctx.session.start) {
       // обнуление места старта (location) в сессии
-      ctx.session.location = '---';
-      ctx.session.start.inline_keyboard[1][0].text = 'Место старта';
+      ctx.session.locationWeather = '---';
+      ctx.session.start.inline_keyboard[1][1].text = 'Погода';
     }
 
     // получение массива с городами, соответствующих введенной пользователем строки
@@ -32,7 +32,7 @@ export async function handlerSceneLocation(ctx: IBotContext, text: string) {
     }
     // отправка меню с найденными городами
     ctx.reply(txt.chooseCity, {
-      ...keyboardLocation(citiesDB, 'mainLocation_'),
+      ...keyboardLocationWeather(citiesDB, 'weather_'),
     });
   } catch (error) {
     errorHandler(error);

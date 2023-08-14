@@ -9,8 +9,7 @@ import { sceneLocationText as txt } from './text.js';
 
 export const locationScene = new Scenes.BaseScene<IBotContext>('location');
 locationScene.enter(async (ctx) => await ctx.reply(txt.choosingCity));
-locationScene.command('quit', locationScene.leave());
-locationScene.hears('end', leave<IBotContext>());
+locationScene.command('quit', leave<IBotContext>());
 
 locationScene.on(message('text'), async (ctx) => {
   const text = ctx.message.text;
