@@ -6,7 +6,7 @@ export const getKeyboardSummary = (): Markup.Markup<InlineKeyboardMarkup> => {
   const keyboard = [
     [
       Markup.button.callback('Опубликовать', 'publication'),
-      Markup.button.callback('Редактировать', 'meetEdit_back'),
+      Markup.button.callback('Редактировать', 'backToMain'),
     ],
   ];
   return Markup.inlineKeyboard(keyboard);

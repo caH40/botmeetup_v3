@@ -16,6 +16,8 @@ export const mainMenu = async (ctx: IBotContext, isNewMenu?: boolean) => {
   };
 
   if (isNewMenu) {
+    // удаление и отправка нового меню в тех случаях когда нельзя отредактировать прошлое сообщение
+    await ctx.deleteMessage().catch((error) => errorHandler(error));
     await ctx
       .reply('Выберите блок заполнения', {
         reply_markup: getKeyboard(),
