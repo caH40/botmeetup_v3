@@ -11,6 +11,7 @@ import { actions } from './actions/actions.js';
 import { locationScene } from './menu/rideon/scene/location/location.scene.js';
 import { locationWeatherScene } from './menu/rideon/scene/location_weather/location_weather.scene.js';
 import { descriptionScene } from './menu/rideon/scene/description/description.scene.js';
+import { pictureScene } from './menu/rideon/scene/picture/picture.scene.js';
 
 // запуск mongoose подключения к БД
 initMongodb();
@@ -21,6 +22,7 @@ const stage = new Scenes.Stage<IBotContext>([
   locationScene,
   locationWeatherScene,
   descriptionScene,
+  pictureScene,
 ]);
 
 bot.use(session());

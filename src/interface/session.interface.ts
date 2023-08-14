@@ -21,4 +21,5 @@ export interface SessionData extends Scenes.SceneSession<MySceneSession> {
   location: string;
   locationWeather: string;
   description: string;
+  pictureId: string;
 }
