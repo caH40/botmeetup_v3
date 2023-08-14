@@ -8,7 +8,13 @@ import { IBotContext } from '../../../../interface/context.interface.js';
 import { sceneLocationText as txt } from './text.js';
 
 export const locationWeatherScene = new Scenes.BaseScene<IBotContext>('weather');
-locationWeatherScene.enter(async (ctx) => await ctx.reply(txt.choosingCity));
+locationWeatherScene.enter(async (ctx) => {
+  // удаление меню, что бы после возврата из сессии сделать новое
+  await ctx.deleteMessage();
+
+  await ctx.reply(txt.choosingCity);
+});
+
 locationWeatherScene.command('quit', leave<IBotContext>());
 
 locationWeatherScene.on(message('text'), async (ctx) => {
