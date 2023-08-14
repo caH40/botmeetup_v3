@@ -11,10 +11,8 @@ export const getActionPublication = (bot: Telegraf<IBotContext>): void => {
     //проверка на заполненность всех полей объявления, краткое описание заезда может не заполняться
     const finalPost = formFinalPost(ctx);
     if (finalPost.includes('---') || !ctx.session.pictureId) {
-      await ctx.editMessageText(
-        'Не все поля заполнены!!!',
-        getKeyboardBack('Продолжить ввод данных')
-      );
+      await ctx.deleteMessage();
+      await ctx.reply('Не все поля заполнены!!!', getKeyboardBack('Продолжить ввод данных'));
       return;
     }
     // удаление меню
