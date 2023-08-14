@@ -18,6 +18,8 @@ import { getActionDistances } from '../menu/rideon/action/sub/distance-sub.js';
 import { getActionSpeeds } from '../menu/rideon/action/sub/speed-sub.js';
 import { getActionLocationStart } from '../menu/rideon/scene/location/action/location.action.js';
 import { getActionLocationWeatherStart } from '../menu/rideon/scene/location_weather/action/location_weather.action.js';
+import { getActionEdit } from '../menu/rideon/action/main/edit.js';
+import { getActionPublication } from '../menu/rideon/action/main/publication.js';
 
 // action для главного меню rideon
 const getActionRideonMain = (bot: Telegraf<IBotContext>): void[] => [
@@ -39,6 +41,8 @@ const getActionRideonSub = (bot: Telegraf<IBotContext>): void[] => [
   getActionsTimes(bot),
   getActionDistances(bot),
   getActionSpeeds(bot),
+  getActionEdit(bot),
+  getActionPublication(bot),
 ];
 
 // объединение всех action в один массив
