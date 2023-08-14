@@ -4,3 +4,8 @@ export interface ITextLocations {
   notFound: string;
   chooseCity: string;
 }
+export interface ITextDescriptionScene {
+  greeting: string;
+  prevDescription: string;
+  chooseBlock: string;
+}
