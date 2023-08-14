@@ -17,7 +17,10 @@ export const getActionPublication = (bot: Telegraf<IBotContext>): void => {
       );
       return;
     }
+    // удаление меню
+    await ctx.deleteMessage();
 
+    // публикация объявления в телеграм и сохранение в БД
     await publishForm(ctx);
   });
 };
