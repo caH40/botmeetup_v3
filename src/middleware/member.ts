@@ -11,11 +11,11 @@ import { errorHandler } from '../errors/error.js';
 
 export async function checkMember(ctx: IBotContext, next: () => void) {
   try {
-    // console.log(ctx.session);
-
     // если приходит контекст от нажатой кнопки ctx.callbackQuery,
     // значит пользователь уже прошел проверку
-    if (ctx.callbackQuery) return next();
+    if (ctx.callbackQuery) {
+      return next();
+    }
 
     // id самого телеграмма
     const telegramId = 777000;

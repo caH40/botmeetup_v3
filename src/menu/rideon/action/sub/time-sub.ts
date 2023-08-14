@@ -11,7 +11,7 @@ export const getActionsTimes = (bot: Telegraf<IBotContext>): void => {
     const time = ctx.match[0].replace('timeStart_', '');
 
     // проверка инициализации сессии
-    if (ctx.session) {
+    if (ctx.session && ctx.session.start) {
       // сохранение времени старта в сессию
       ctx.session.time = time;
       // изменение кнопки (добавление отметки о заполнении)

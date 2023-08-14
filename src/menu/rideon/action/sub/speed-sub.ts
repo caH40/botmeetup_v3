@@ -11,7 +11,7 @@ export const getActionSpeeds = (bot: Telegraf<IBotContext>): void => {
     const speed = ctx.match[0].replace('speedStart_', '');
 
     // проверка инициализации сессии
-    if (ctx.session) {
+    if (ctx.session && ctx.session.start) {
       // сохранение средней скорости заезда в сессию
       ctx.session.speed = speed;
       // изменение кнопки (добавление отметки о заполнении)

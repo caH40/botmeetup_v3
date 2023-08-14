@@ -3,7 +3,9 @@ type TypeTimeFormat = 'HM' | 'HmS' | 'DDMMYYHm' | 'DDMMYY' | undefined;
 
 export function getTimerLocal(date: number, timeFormat: TypeTimeFormat, long?: string): string {
   const dateForFormat = new Date(date);
-  if (!date || date === 0) return 'Дата отсутствует...';
+  if (!date || date === 0) {
+    return 'Дата отсутствует...';
+  }
 
   const formatterHourAndMinutes = new Intl.DateTimeFormat('ru', {
     hour: '2-digit',
