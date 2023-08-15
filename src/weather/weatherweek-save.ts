@@ -5,13 +5,10 @@ import { WeatherWeek } from '../model/WeatherWeek.js';
 // сохранение/обновление данных погоды в актуальных объявлениях о заездах
 export async function saveWeatherWeek(arrayWeather: IWeatherWeek[]) {
   try {
-    const savedWeather = await WeatherWeek.findOne();
-    if (savedWeather) {
-      await WeatherWeek.findByIdAndUpdate(savedWeather.id, { list: arrayWeather });
-    } else {
-      const weatherWeek = new WeatherWeek({ list: arrayWeather });
-      await weatherWeek.save();
-    }
+    // очистка коллекции от документов
+    await WeatherWeek.deleteMany();
+    // сохранение всех документов из массива
+    await WeatherWeek.insertMany(arrayWeather);
   } catch (error) {
     errorHandler(error);
   }

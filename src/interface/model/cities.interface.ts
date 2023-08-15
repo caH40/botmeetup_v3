@@ -1,7 +1,7 @@
-import { ObjectId } from 'mongoose';
+import { Types } from 'mongoose';
 
 export interface ICities {
-  _id?: ObjectId;
+  _id?: Types.ObjectId;
   name: string;
   lon: number;
   lat: number;

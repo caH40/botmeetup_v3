@@ -4,7 +4,7 @@ import { City } from '../model/City.js';
 import { Post } from '../model/Post.js';
 
 // получение данных городов (широта, долгота) из БД, которые указаны в актуальных объявлениях о велозаездах
-export async function createLocationsWeather() {
+export async function getLocationsWeather() {
   try {
     // выборка из актуальных постов (заезды еще не состоялись) города мониторинга погоды
     const postsDB = await Post.find({ isLastUpdated: false });

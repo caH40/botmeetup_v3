@@ -2,7 +2,7 @@ import { Telegraf } from 'telegraf';
 
 import { IBotContext } from '../../../../interface/context.interface.js';
 import { publishForm } from '../../../../modules/form-publish.js';
-import { formFinalPost } from '../../../../modules/form-final.js';
+import { formFinalPost } from '../../../../modules/forms/form-final.js';
 import { getKeyboardBack } from '../../keyboard/back.js';
 
 // обработка нажатия кнопки "Дистанция" в главном меню

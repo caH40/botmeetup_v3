@@ -1,5 +1,5 @@
-import { errorHandler } from '../errors/error.js';
-import { IBotContext } from '../interface/context.interface.js';
+import { errorHandler } from '../../errors/error.js';
+import { IBotContext } from '../../interface/context.interface.js';
 
 export function formFinalPost(ctx: IBotContext) {
   try {

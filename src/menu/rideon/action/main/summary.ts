@@ -1,6 +1,6 @@
 import { Telegraf } from 'telegraf';
 import { IBotContext } from '../../../../interface/context.interface.js';
-import { formFinalPost } from '../../../../modules/form-final.js';
+import { formFinalPost } from '../../../../modules/forms/form-final.js';
 import { getKeyboardSummary } from '../../keyboard/summary.js';
 
 // обработка нажатия кнопки "Дата заезда" в главном меню

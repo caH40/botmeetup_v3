@@ -37,9 +37,8 @@ bot.use(stage.middleware());
 //   return next();
 // });
 
+// bot.command('id', async (ctx) => console.log(ctx.message));
 bot.command('weather', async () => await getWeatherForActualPosts());
-bot.command('greeter', (ctx) => ctx.scene.enter('greeter'));
-bot.command('location', (ctx: IBotContext) => ctx.scene.enter('location'));
 
 for (const command of commands(bot)) {
   command;
@@ -47,6 +46,8 @@ for (const command of commands(bot)) {
 for (const action of actions(bot)) {
   action;
 }
+
+// bot.on('message', async (ctx) => await controlMessage(ctx));
 
 bot.launch();
 // Enable graceful stop
