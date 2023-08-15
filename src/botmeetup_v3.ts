@@ -12,6 +12,7 @@ import { locationScene } from './menu/rideon/scene/location/location.scene.js';
 import { locationWeatherScene } from './menu/rideon/scene/location_weather/location_weather.scene.js';
 import { descriptionScene } from './menu/rideon/scene/description/description.scene.js';
 import { pictureScene } from './menu/rideon/scene/picture/picture.scene.js';
+import { weatherFromApi } from './weather/weather-api.js';
 
 // запуск mongoose подключения к БД
 initMongodb();
@@ -36,6 +37,7 @@ bot.use(stage.middleware());
 //   return next();
 // });
 
+bot.command('weather', async () => await weatherFromApi());
 bot.command('greeter', (ctx) => ctx.scene.enter('greeter'));
 bot.command('location', (ctx: IBotContext) => ctx.scene.enter('location'));
 
