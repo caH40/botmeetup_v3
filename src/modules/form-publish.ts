@@ -1,7 +1,9 @@
 import { IBotContext } from '../interface/context.interface.js';
 import { Post } from '../model/Post.js';
 import { sendPosted } from '../reply/posted.js';
-import { formFinalPost } from './form-final.js';
+import { getWeatherForActualPosts } from '../weather/weather-for-posts.js';
+import { weatherUpdate } from '../weather/weather-update.js';
+import { formFinalPost } from './forms/form-final.js';
 
 // публикация объявления в телеграм и сохранение в БД
 export const publishForm = async (ctx: IBotContext) => {
@@ -62,6 +64,6 @@ export const publishForm = async (ctx: IBotContext) => {
   });
 
   await post.save();
-  // await weatherFromApi(ctx);
-  // await weatherUpdate(ctx);
+  await getWeatherForActualPosts();
+  await weatherUpdate(ctx);
 };

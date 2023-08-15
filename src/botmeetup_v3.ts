@@ -12,6 +12,7 @@ import { locationScene } from './menu/rideon/scene/location/location.scene.js';
 import { locationWeatherScene } from './menu/rideon/scene/location_weather/location_weather.scene.js';
 import { descriptionScene } from './menu/rideon/scene/description/description.scene.js';
 import { pictureScene } from './menu/rideon/scene/picture/picture.scene.js';
+import { getWeatherForActualPosts } from './weather/weather-for-posts.js';
 
 // запуск mongoose подключения к БД
 initMongodb();
@@ -36,8 +37,8 @@ bot.use(stage.middleware());
 //   return next();
 // });
 
-bot.command('greeter', (ctx) => ctx.scene.enter('greeter'));
-bot.command('location', (ctx: IBotContext) => ctx.scene.enter('location'));
+// bot.command('id', async (ctx) => console.log(ctx.message));
+bot.command('weather', async () => await getWeatherForActualPosts());
 
 for (const command of commands(bot)) {
   command;
@@ -45,6 +46,8 @@ for (const command of commands(bot)) {
 for (const action of actions(bot)) {
   action;
 }
+
+// bot.on('message', async (ctx) => await controlMessage(ctx));
 
 bot.launch();
 // Enable graceful stop
