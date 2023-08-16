@@ -7,16 +7,15 @@ export const sendMessageWeather = async (
   messageIdGroup: number,
   formWeatherStr?: string
 ) => {
-  const optionalOptions = {
-    is_anonymous: false,
-    correct_option_id: 0,
-    reply_to_message_id: messageIdGroup,
-  };
+  const message = formWeatherStr ?? 'нет данных';
 
   // добавление голосования кто участвует в заезде в дискуссию о заезде
 
   const response = await ctx.telegram
-    .sendMessage(groupId, formWeatherStr ?? 'нет данных', optionalOptions)
+    .sendMessage(groupId, message, {
+      reply_to_message_id: messageIdGroup,
+      parse_mode: 'HTML',
+    })
     .catch((error) => errorHandler(error));
 
   const messageId = response ? response.message_id : undefined;

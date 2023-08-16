@@ -34,7 +34,7 @@ export async function weatherUpdate(ctx: IBotContext) {
       await updateWeatherInPost(postsDB[i]._id, weatherCurrent);
 
       //обновление сообщения в дискуссионной группе к объявлению о велозаезде
-      // await editPost(ctx, postsDB[i].messageIdWeather, formWeatherStr);
+      await editPost(ctx, postsDB[i].messageIdWeather, formWeatherStr);
     }
   } catch (error) {
     errorHandler(error);

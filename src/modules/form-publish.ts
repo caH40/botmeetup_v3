@@ -3,7 +3,6 @@ import { Post } from '../model/Post.js';
 import { sendPosted } from '../reply/posted.js';
 import { createPostData } from '../utils/postdata-create.js';
 import { getWeatherForActualPosts } from '../weather/weather-for-posts.js';
-import { weatherUpdate } from '../weather/weather-update.js';
 import { formFinalPost } from './forms/form-final.js';
 
 // публикация объявления в телеграм и сохранение в БД
@@ -66,6 +65,6 @@ export const publishForm = async (ctx: IBotContext) => {
   });
 
   await post.save();
+
   await getWeatherForActualPosts();
-  await weatherUpdate(ctx);
 };
