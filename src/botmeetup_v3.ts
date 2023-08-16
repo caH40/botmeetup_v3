@@ -12,9 +12,9 @@ import { locationScene } from './menu/rideon/scene/location/location.scene.js';
 import { locationWeatherScene } from './menu/rideon/scene/location_weather/location_weather.scene.js';
 import { descriptionScene } from './menu/rideon/scene/description/description.scene.js';
 import { pictureScene } from './menu/rideon/scene/picture/picture.scene.js';
-import { getWeatherForActualPosts } from './weather/weather-for-posts.js';
 import { controlForwardMessage } from './middleware/forward-message.js';
 import { pollHandler } from './modules/poll.js';
+import { weatherUpdate } from './weather/weather-update.js';
 
 // запуск mongoose подключения к БД
 initMongodb();
@@ -31,28 +31,20 @@ const stage = new Scenes.Stage<IBotContext>([
 bot.use(session());
 bot.use(checkMember);
 bot.use(controlForwardMessage);
-
 bot.use(stage.middleware());
-// bot.use((ctx, next) => {
-//   // we now have access to the the fields defined above
-//   ctx.myContextProp ??= '';
-//   ctx.session.mySessionProp ??= 0;
-//   ctx.scene.session.mySceneSessionProp ??= 0;
-//   return next();
-// });
 
-// bot.command('id', async (ctx) => console.log(ctx.message));
-bot.command('weather', async () => await getWeatherForActualPosts());
+// для тестирования
+bot.command('weather', async (ctx) => await weatherUpdate(ctx));
 bot.on('poll_answer', async (ctx) => await pollHandler(ctx));
 
+// обработка команд
 for (const command of commands(bot)) {
   command;
 }
+// обработка экшенов
 for (const action of actions(bot)) {
   action;
 }
-
-// bot.on('message', async (ctx) => await controlMessage(ctx));
 
 bot.launch();
 // Enable graceful stop

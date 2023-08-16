@@ -15,8 +15,6 @@ export const editPost = async (
       'привет!',
       formWeatherStr + `\nUpdate: ${new Date().toLocaleString()}`,
       {
-        // reply_to_message_id: postsDB[i].messageIdGroup, ??? необходим или нет
-        // в спецификации к этому методу нет данного свойства
         parse_mode: 'HTML',
       }
     )

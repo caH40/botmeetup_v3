@@ -1,15 +1,28 @@
 import { IWeatherWeek } from '../../interface/model/weatherweek.interface.js';
 
-export function formWeather(weatherCurrent: IWeatherWeek | undefined): string | undefined {
+// форма для погоды в дискуссионной группе к объявлению о велозаезде
+export const formWeather = (weatherCurrent: IWeatherWeek | undefined): string | undefined => {
   if (!weatherCurrent) {
     return;
   }
 
-  return `Место мониторинга: ${weatherCurrent.city.name ?? '---'}\nТемпература утром: ${
-    weatherCurrent.tempMorn ?? '---'
-  }°C\nТемпература днём: ${weatherCurrent.tempDay ?? '---'}°C\nТемпература вечером: ${
-    weatherCurrent.tempEve ?? '---'
-  }°C\nВлажность: ${weatherCurrent.humidity ?? '---'}%\nСкорость ветра: ${
-    weatherCurrent.windSpeed ?? '---'
-  }м/с\n${weatherCurrent.desc ?? 'Нет данных о погоде.'}`;
-}
+  const cityNameStr = `<b>Место мониторинга:</b> ${weatherCurrent.city.name ?? '---'}\n`;
+  const tempMornStr = `<b>Температура утром:</b> ${weatherCurrent.tempMorn ?? '---'}°C\n`;
+  const tempDayStr = `<b>Температура днём:</b> ${weatherCurrent.tempDay ?? '---'}°C\n`;
+  const tempEveStr = `<b>Температура вечером:</b> ${weatherCurrent.tempEve ?? '---'}°C\n`;
+  const humidityStr = `<b>Влажность:</b> ${weatherCurrent.humidity ?? '---'}%\n`;
+  const windSpeedStr = `<b>Скорость ветра:</b> ${weatherCurrent.windSpeed ?? '---'}м/с\n`;
+  const descStr = `<b>Описание:</b> ${weatherCurrent.desc ?? 'Нет данных о погоде.'}`;
+
+  const arrayWithStrings = [
+    cityNameStr,
+    tempMornStr,
+    tempDayStr,
+    tempEveStr,
+    humidityStr,
+    windSpeedStr,
+    descStr,
+  ];
+
+  return arrayWithStrings.reduce((acc, cur) => acc + cur, '');
+};
