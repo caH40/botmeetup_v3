@@ -14,6 +14,7 @@ import { descriptionScene } from './menu/rideon/scene/description/description.sc
 import { pictureScene } from './menu/rideon/scene/picture/picture.scene.js';
 import { getWeatherForActualPosts } from './weather/weather-for-posts.js';
 import { controlForwardMessage } from './middleware/forward-message.js';
+import { pollHandler } from './modules/poll.js';
 
 // запуск mongoose подключения к БД
 initMongodb();
@@ -42,6 +43,7 @@ bot.use(stage.middleware());
 
 // bot.command('id', async (ctx) => console.log(ctx.message));
 bot.command('weather', async () => await getWeatherForActualPosts());
+bot.on('poll_answer', async (ctx) => await pollHandler(ctx));
 
 for (const command of commands(bot)) {
   command;
