@@ -1,11 +1,11 @@
 import { Message } from 'telegraf/types';
 
 import { IBotContext } from '../interface/context.interface.js';
-import { Poll } from '../model/Poll.js';
 import { Post } from '../model/Post.js';
-import { sendPoll } from '../telegram/poll.js';
+import { createMessageWeather } from './modules/weather.js';
+import { createMessagePoll } from './modules/poll.js';
 
-export const addPoll = async (ctx: IBotContext, next: () => void) => {
+export const controlForwardMessage = async (ctx: IBotContext, next: () => void) => {
   // обрабатываются сообщения со свойством message
   if (!ctx.message) {
     return next();
@@ -31,15 +31,11 @@ export const addPoll = async (ctx: IBotContext, next: () => void) => {
   if (!postDB) {
     return next();
   }
-  const { _id } = postDB;
+  const { _id, date, locationWeather } = postDB;
 
-  // отправляем голосования в группу дискуссий
-  const poll = await sendPoll(ctx, groupId, messageIdGroup);
-  // выход, если не получены данные сообщения с голосованием
-  if (!poll) {
-    return next();
-  }
+  // обработчик сообщения о голосовании для дискуссионной группы
+  await createMessagePoll(ctx, groupId, messageIdGroup, _id, next);
 
-  // создание документа Poll в БД
-  await Poll.create({ postId: _id, poll });
+  // обработчик сообщения о погоде для дискуссионной группы
+  await createMessageWeather(ctx, date, locationWeather, groupId, messageIdGroup, _id, next);
 };
