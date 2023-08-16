@@ -1,13 +1,15 @@
 import { IBotContext } from '../interface/context.interface.js';
 import { Post } from '../model/Post.js';
 import { sendPosted } from '../reply/posted.js';
+import { createPostData } from '../utils/postdata-create.js';
 import { getWeatherForActualPosts } from '../weather/weather-for-posts.js';
 import { weatherUpdate } from '../weather/weather-update.js';
 import { formFinalPost } from './forms/form-final.js';
 
 // публикация объявления в телеграм и сохранение в БД
 export const publishForm = async (ctx: IBotContext) => {
-  const finalPost = formFinalPost(ctx);
+  const postData = createPostData(ctx);
+  const finalPost = formFinalPost(ctx, postData);
 
   // если объявление уже есть в базе данных
   // const _idPost = ctx.session._id;
