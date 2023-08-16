@@ -13,7 +13,7 @@ import { locationWeatherScene } from './menu/rideon/scene/location_weather/locat
 import { descriptionScene } from './menu/rideon/scene/description/description.scene.js';
 import { pictureScene } from './menu/rideon/scene/picture/picture.scene.js';
 import { getWeatherForActualPosts } from './weather/weather-for-posts.js';
-import { addPoll } from './middleware/poll.js';
+import { controlForwardMessage } from './middleware/forward-message.js';
 
 // запуск mongoose подключения к БД
 initMongodb();
@@ -29,7 +29,8 @@ const stage = new Scenes.Stage<IBotContext>([
 
 bot.use(session());
 bot.use(checkMember);
-bot.use(addPoll);
+bot.use(controlForwardMessage);
+
 bot.use(stage.middleware());
 // bot.use((ctx, next) => {
 //   // we now have access to the the fields defined above
