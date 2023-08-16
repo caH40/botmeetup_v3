@@ -3,7 +3,7 @@ import { Chat } from 'telegraf/types';
 import { CHANNEL_ID } from '../config/dotenv.js';
 import { IBotContext } from '../interface/context.interface.js';
 import { inviteJoinToChannel } from '../reply/invite-join-channel.js';
-import { sendUnknownError } from '../reply/unknown-error.js';
+
 import { errorHandler } from '../errors/error.js';
 
 // проверка состоит ли пользователь бота в соответствующем канале объявлений,
@@ -28,8 +28,7 @@ export async function checkMember(ctx: IBotContext, next: () => void) {
     // если не получен id пользователя или пришла переадресация с id телеграма,
     // то выход из middleware
     if (userId === telegramId) {
-      await sendUnknownError(ctx);
-      return;
+      return next();
     }
     // получение статуса пользователя в соответствующем канале
     const { status } = await ctx.telegram.getChatMember(CHANNEL_ID, userId);
