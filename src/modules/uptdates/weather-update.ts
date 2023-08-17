@@ -1,15 +1,15 @@
-import { Post } from '../model/Post.js';
-import { getWeather } from './weather-get.js';
-import { errorHandler } from '../errors/error.js';
-import { IPost } from '../interface/model/post.interface.js';
-import { isNotActualDate } from '../utils/actual.js';
-import { IBotContext } from '../interface/context.interface.js';
+import { Post } from '../../model/Post.js';
+import { getWeather } from '../../weather/weather-get.js';
+import { errorHandler } from '../../errors/error.js';
+import { IPost } from '../../interface/model/post.interface.js';
+import { isNotActualDate } from '../../utils/actual.js';
+import { IMixContext } from '../../interface/context.interface.js';
 
-import { editPost } from '../telegram/editMessage-post.js';
-import { updateWeatherInPost } from '../database/update/weather-in-post.js';
+import { updateMessageWeather } from '../../telegram/message-weather.js';
+import { updateWeatherDB } from '../../database/update/weather-in-post.js';
 
-// обновление погоды в актуальных Объявлениях в канале телеграмм
-export async function weatherUpdate(ctx: IBotContext) {
+// обновление погоды в дискуссионных группах, соответствующих актуальным объявлениям о велозаездах
+export async function weatherUpdate(ctx: IMixContext) {
   try {
     const postsDB: IPost[] = await Post.find();
 
@@ -30,11 +30,11 @@ export async function weatherUpdate(ctx: IBotContext) {
       if (!formWeatherStr) {
         return console.log('В БД нет данных о погоде'); // eslint-disable-line
       }
-      // обновление данных о погоде в посте
-      await updateWeatherInPost(postsDB[i]._id, weatherCurrent);
+      // обновление данных в БД в Post
+      await updateWeatherDB(postsDB[i]._id, weatherCurrent);
 
       //обновление сообщения в дискуссионной группе к объявлению о велозаезде
-      await editPost(ctx, postsDB[i].messageIdWeather, formWeatherStr);
+      await updateMessageWeather(ctx, postsDB[i].messageIdWeather, formWeatherStr);
     }
   } catch (error) {
     errorHandler(error);

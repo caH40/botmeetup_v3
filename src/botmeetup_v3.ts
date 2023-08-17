@@ -1,6 +1,4 @@
 import { Scenes, Telegraf, session } from 'telegraf';
-// import { callbackQuery } from 'telegraf/filters';
-// import { message } from 'telegraf/filters';
 
 import { BOT_TOKEN } from './config/dotenv.js';
 import { IBotContext } from './interface/context.interface.js';
@@ -14,7 +12,9 @@ import { descriptionScene } from './menu/rideon/scene/description/description.sc
 import { pictureScene } from './menu/rideon/scene/picture/picture.scene.js';
 import { controlForwardMessage } from './middleware/forward-message.js';
 import { pollHandler } from './modules/poll.js';
-import { weatherUpdate } from './weather/weather-update.js';
+import { weatherUpdate } from './modules/uptdates/weather-update.js';
+import { updatePosts } from './modules/uptdates/post.js';
+import { timers } from './modules/timer.js';
 
 // запуск mongoose подключения к БД
 initMongodb();
@@ -35,6 +35,9 @@ bot.use(stage.middleware());
 
 // для тестирования
 bot.command('weather', async (ctx) => await weatherUpdate(ctx));
+bot.command('post', async (ctx) => await updatePosts(ctx));
+
+// контроль апдейтов голосования
 bot.on('poll_answer', async (ctx) => await pollHandler(ctx));
 
 // обработка команд
@@ -46,7 +49,10 @@ for (const action of actions(bot)) {
   action;
 }
 
+timers(bot);
+
 bot.launch();
+
 // Enable graceful stop
 process.once('SIGINT', () => bot.stop('SIGINT'));
 process.once('SIGTERM', () => bot.stop('SIGTERM'));

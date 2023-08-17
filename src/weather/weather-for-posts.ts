@@ -1,11 +1,11 @@
 import { getLocationsWeather } from './locations.js';
 import { saveWeatherWeek } from './weatherweek-save.js';
-
-import { IWeatherDaily } from '../interface/weather.js';
 import { errorHandler } from '../errors/error.js';
-import { IWeatherWeek } from '../interface/model/weatherweek.interface.js';
 import { getWeatherFromApi } from '../api/openweather.js';
 import { getWeatherForDB } from './weather-for-db.js';
+
+import { IWeatherDaily } from '../interface/weather.js';
+import { IWeatherWeek } from '../interface/model/weatherweek.interface.js';
 
 export async function getWeatherForActualPosts(): Promise<void> {
   try {
@@ -20,6 +20,7 @@ export async function getWeatherForActualPosts(): Promise<void> {
     //массив для сохранения в БД
     const weathersForDB: IWeatherWeek[] = [];
 
+    // запрос погоды для актуальных объявлений о велозаездах
     for (let indexCity = 0; indexCity < locationsWeather.length; indexCity++) {
       const { lon, lat } = locationsWeather[indexCity];
       const weatherApi = await getWeatherFromApi(lon, lat);

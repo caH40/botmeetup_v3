@@ -8,7 +8,7 @@ import { formFinalPost } from './forms/form-final.js';
 // публикация объявления в телеграм и сохранение в БД
 export const publishForm = async (ctx: IBotContext) => {
   const postData = createPostData(ctx);
-  const finalPost = formFinalPost(ctx, postData);
+  const finalPost = formFinalPost(postData);
 
   // если объявление уже есть в базе данных
   // const _idPost = ctx.session._id;
