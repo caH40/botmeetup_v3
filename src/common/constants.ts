@@ -10,6 +10,8 @@ export const regular: IRegular = {
   // кнопка выбора города, где будет старт
   locationStart: /mainLocation_.+/,
   locationWeatherStart: /weather_.+/,
+  // паттерны
+  postIdGetOne: /postId_get_.+/,
 };
 
 export const distanceSummary: string[] = [
