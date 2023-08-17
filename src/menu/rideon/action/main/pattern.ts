@@ -1,7 +1,9 @@
 import { Telegraf } from 'telegraf';
 import { IBotContext } from '../../../../interface/context.interface.js';
 
-// обработка нажатия кнопки "Дата заезда" в главном меню
+import { handlerPattern } from '../../handler-actions/pattern.js';
+
+// обработка нажатия кнопки "Использовать ранее созданное объявление" в главном меню
 export const getActionPattern = (bot: Telegraf<IBotContext>): void => {
-  bot.action('meetPattern', async (ctx) => console.log('meetPattern')); //eslint-disable-line
+  bot.action('meetPattern', async (ctx) => await handlerPattern(ctx));
 };
