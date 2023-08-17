@@ -5,4 +5,6 @@ export interface IRegular {
   speedStart: RegExp;
   locationStart: RegExp;
   locationWeatherStart: RegExp;
+  postIdGetOne: RegExp;
+  postIdDelOne: RegExp;
 }
