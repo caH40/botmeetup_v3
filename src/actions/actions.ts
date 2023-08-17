@@ -23,6 +23,7 @@ import { getActionPublication } from '../menu/rideon/action/sub/publication.js';
 import { getActionPatternGet } from '../menu/rideon/action/sub/pattern-get.js';
 import { getActionPatternDel } from '../menu/rideon/action/sub/pattern-del.js';
 import { getActionPatternGetOne } from '../menu/rideon/action/sub/pattern-get-one.js';
+import { getActionPatternDelOne } from '../menu/rideon/action/sub/pattern-del-one.js';
 
 // action для главного меню rideon
 const getActionRideonMain = (bot: Telegraf<IBotContext>): void[] => [
@@ -50,6 +51,7 @@ const getActionRideonSub = (bot: Telegraf<IBotContext>): void[] => [
   getActionPatternGet(bot),
   getActionPatternDel(bot),
   getActionPatternGetOne(bot),
+  getActionPatternDelOne(bot),
 ];
 
 // объединение всех action в один массив

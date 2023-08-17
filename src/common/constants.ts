@@ -12,6 +12,7 @@ export const regular: IRegular = {
   locationWeatherStart: /weather_.+/,
   // паттерны
   postIdGetOne: /postId_get_.+/,
+  postIdDelOne: /postId_del_.+/,
 };
 
 export const distanceSummary: string[] = [
