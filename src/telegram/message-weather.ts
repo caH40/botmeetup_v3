@@ -1,9 +1,9 @@
 import { GROUP_ID } from '../config/dotenv.js';
 import { errorHandler } from '../errors/error.js';
-import { IBotContext } from '../interface/context.interface.js';
+import { IMixContext } from '../interface/context.interface.js';
 
-export const editPost = async (
-  ctx: IBotContext,
+export const updateMessageWeather = async (
+  ctx: IMixContext,
   post: number,
   formWeatherStr: string
 ): Promise<void> => {

@@ -1,18 +1,9 @@
 import { errorHandler } from '../../errors/error.js';
-import { IBotContext } from '../../interface/context.interface.js';
 import { IPostData } from '../../interface/postdata.interdace.js';
 import { getTimeLeft } from '../../utils/time-left.js';
 
-export function formFinalPost(ctx: IBotContext, postData: IPostData) {
+export function formFinalPost(postData: IPostData) {
   try {
-    if (ctx.callbackQuery) {
-      const userName = ctx.callbackQuery.from.username;
-      const userId = ctx.callbackQuery.from.id;
-
-      ctx.session.leader = '@' + userName;
-      ctx.session.userId = userId;
-    }
-
     //строка о погоде
     const tempDay = postData.tempDay ? `${Math.round(+postData.tempDay)}°C` : '-';
     const humidity = `${postData.humidity ?? '-'}%`;

@@ -3,7 +3,7 @@ import { IBotContext } from '../interface/context.interface.js';
 import { Poll } from '../model/Poll.js';
 import { Post } from '../model/Post.js';
 import { missBikeRide } from '../telegram/message/miss.js';
-import { updateWeatherInPost } from '../telegram/update-post.js';
+import { updatePostChannel } from '../telegram/update-post.js';
 import { getPollUsers } from '../utils/poll-users.js';
 
 // обработчик update pollAnswer, действия при голосовании
@@ -49,7 +49,7 @@ export async function pollHandler(ctx: IBotContext) {
     await Poll.findOneAndUpdate({ 'poll.id': pollId }, { $set: { pollUsers, pollQuantity } });
 
     // обновление поста, в дискуссионной группе которой проголосовали
-    await updateWeatherInPost(ctx, responsePost, pollQuantity);
+    await updatePostChannel(ctx, responsePost, pollQuantity);
   } catch (error) {
     errorHandler(error);
   }

@@ -21,6 +21,22 @@ export async function initSession(ctx: IBotContext) {
     ctx.session.channelName = title;
     ctx.session.linkedChatId = linked_chat_id;
     ctx.session.messageDel = [];
+
+    if (ctx.message) {
+      const userName = ctx.message.from.username;
+      const userId = ctx.message.from.id;
+
+      ctx.session.leader = `@${userName}`;
+      ctx.session.userId = userId;
+    }
+
+    if (ctx.callbackQuery) {
+      const userName = ctx.callbackQuery.from.username;
+      const userId = ctx.callbackQuery.from.id;
+
+      ctx.session.leader = `@${userName}`;
+      ctx.session.userId = userId;
+    }
   } catch (error) {
     errorHandler(error);
   }

@@ -15,12 +15,12 @@ export const getActionSummary = (bot: Telegraf<IBotContext>): void => {
     // в зависимости от наличия фотографии вызываются разные методы
     if (ctx.session.pictureId) {
       await ctx.replyWithPhoto(ctx.session.pictureId, {
-        caption: formFinalPost(ctx, postData),
+        caption: formFinalPost(postData),
         parse_mode: 'HTML',
         ...getKeyboardSummary(),
       });
     } else {
-      await ctx.replyWithHTML(formFinalPost(ctx, postData), {
+      await ctx.replyWithHTML(formFinalPost(postData), {
         ...getKeyboardSummary(),
       });
     }
