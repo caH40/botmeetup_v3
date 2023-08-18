@@ -28,7 +28,7 @@ export const getActionDateStart = (bot: Telegraf<IBotContext>): void => {
       }
 
       // возврат в главное меню
-      await mainMenu(ctx);
+      await mainMenu(ctx, { type: 'creating' });
     } catch (error) {
       errorHandler(error);
     }

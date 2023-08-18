@@ -1,8 +1,8 @@
 import { Types } from 'mongoose';
 
-import { Post } from '../../model/Post.js';
-import { IWeatherWeek } from '../../interface/model/weatherweek.interface.js';
-import { errorHandler } from '../../errors/error.js';
+import { Post } from '../model/Post.js';
+import { IWeatherWeek } from '../interface/model/weatherweek.interface.js';
+import { errorHandler } from '../errors/error.js';
 
 // обновление данных в БД в Post
 export const updateWeatherDB = async (

@@ -6,7 +6,7 @@ import { isNotActualDate } from '../../utils/actual.js';
 import { IMixContext } from '../../interface/context.interface.js';
 
 import { updateMessageWeather } from '../../telegram/message-weather.js';
-import { updateWeatherDB } from '../../database/update/weather-in-post.js';
+import { updateWeatherDB } from '../../database/weather-in-post.js';
 
 // обновление погоды в дискуссионных группах, соответствующих актуальным объявлениям о велозаездах
 export async function weatherUpdate(ctx: IMixContext) {

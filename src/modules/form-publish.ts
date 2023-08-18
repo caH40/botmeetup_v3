@@ -10,31 +10,6 @@ export const publishForm = async (ctx: IBotContext) => {
   const postData = createPostData(ctx);
   const finalPost = formFinalPost(postData);
 
-  // если объявление уже есть в базе данных
-  // const _idPost = ctx.session._id;
-  // if (_idPost) {
-  //   const postDB = await Post.findOneAndUpdate(
-  //     { _id: _idPost },
-  //     {
-  //       $set: {
-  //         date: ctx.session.dateStart,
-  //         time: ctx.session.time,
-  //         locationStart: ctx.session.locationStart,
-  //         locationWeather: ctx.session.locationWeather,
-  //         distance: ctx.session.distance,
-  //         speed: ctx.session.speed,
-  //         photoId: ctx.session.photoId,
-  //         description: ctx.session.description,
-  //       },
-  //     },
-  //     { returnDocument: 'after' }
-  //   );
-  //   await updatePhoto(ctx, postDB).catch(error => console.log(error));
-  //   await weatherFromApi(ctx);
-  //   await weatherUpdate(ctx);
-  //   return;
-  // }
-
   const { channelId, channelName, pictureId } = ctx.session;
 
   // публикация поста в канале channelName
