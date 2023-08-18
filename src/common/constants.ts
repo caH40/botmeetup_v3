@@ -13,6 +13,9 @@ export const regular: IRegular = {
   // паттерны
   postIdGetOne: /postId_get_.+/,
   postIdDelOne: /postId_del_.+/,
+  //редактирование/удаление постов
+  editPost: /postId_editPost_.+/,
+  deletePost: /postId_delPost_.+/,
 };
 
 export const distanceSummary: string[] = [

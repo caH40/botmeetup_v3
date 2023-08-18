@@ -24,4 +24,5 @@ export interface SessionData extends Scenes.SceneSession<MySceneSession> {
   pictureId: string;
   leader: string;
   userId: number;
+  postId: string;
 }

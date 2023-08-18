@@ -7,4 +7,6 @@ export interface IRegular {
   locationWeatherStart: RegExp;
   postIdGetOne: RegExp;
   postIdDelOne: RegExp;
+  editPost: RegExp;
+  deletePost: RegExp;
 }
