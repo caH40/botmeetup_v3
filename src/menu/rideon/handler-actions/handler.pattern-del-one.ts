@@ -12,5 +12,5 @@ export const handlerPatternDelOne = async (
   const postId = ctx.match[0].slice(11);
 
   await Post.findOneAndUpdate({ _id: postId }, { $set: { isPattern: false } });
-  await mainMenu(ctx, true);
+  await mainMenu(ctx, { type: 'creating', isNew: true });
 };

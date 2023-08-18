@@ -25,6 +25,6 @@ export const getActionLocationWeatherStart = (bot: Telegraf<IBotContext>): void 
     }
 
     // возврат в главное меню
-    await mainMenu(ctx);
+    await mainMenu(ctx, { type: 'creating' });
   });
 };

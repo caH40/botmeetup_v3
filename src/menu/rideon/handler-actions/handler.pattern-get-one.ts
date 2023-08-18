@@ -38,5 +38,5 @@ export const handlerPatternGetOne = async (
     }
   }
 
-  await mainMenu(ctx, true);
+  await mainMenu(ctx, { type: 'creating', isNew: true });
 };

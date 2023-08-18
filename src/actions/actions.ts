@@ -26,6 +26,8 @@ import { getActionPatternGetOne } from '../menu/rideon/action/sub/pattern-get-on
 import { getActionPatternDelOne } from '../menu/rideon/action/sub/pattern-del-one.js';
 import { getActionEditPost } from '../menu/edit/action/edit-post.js';
 import { getActionDeletePost } from '../menu/edit/action/delete-post.js';
+import { getActionSummaryForEdit } from '../menu/edit/action/summary.js';
+import { getActionPublicationFromEdit } from '../menu/edit/action/publication.js';
 
 // action для главного меню rideon
 const getActionRideonMain = (bot: Telegraf<IBotContext>): void[] => [
@@ -57,6 +59,8 @@ const getActionRideonSub = (bot: Telegraf<IBotContext>): void[] => [
   // редактирование/удаление постов
   getActionEditPost(bot),
   getActionDeletePost(bot),
+  getActionSummaryForEdit(bot),
+  getActionPublicationFromEdit(bot),
 ];
 
 // объединение всех action в один массив

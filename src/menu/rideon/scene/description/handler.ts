@@ -19,7 +19,7 @@ export async function handlerSceneDescription(ctx: IBotContext, text: string) {
     }
 
     // возврат в главное меню
-    await mainMenu(ctx, true);
+    await mainMenu(ctx, { type: 'creating', isNew: true });
   } catch (error) {
     errorHandler(error);
   }
