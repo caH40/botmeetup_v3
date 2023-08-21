@@ -6,7 +6,7 @@ const { leave } = Scenes.Stage;
 import { handlerSceneLocation } from './handler.js';
 import { IBotContext } from '../../../../interface/context.interface.js';
 import { sceneLocationText as txt } from './text.js';
-import { sendReply } from '../../../../reply/reply.js';
+import { sendReply } from '../../../../telegram/reply/reply.js';
 import { saveMessageIdForDel } from '../../../../modules/message-delete.js';
 
 export const locationScene = new Scenes.BaseScene<IBotContext>('location');

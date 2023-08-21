@@ -1,4 +1,4 @@
-import { IBotContext } from '../interface/context.interface.js';
+import { IBotContext } from '../../interface/context.interface.js';
 
 export const sendPosted = async (ctx: IBotContext, channelName: string): Promise<void> => {
   await ctx.reply(

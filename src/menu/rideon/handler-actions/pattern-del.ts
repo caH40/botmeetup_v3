@@ -1,7 +1,7 @@
 import { IBotContext } from '../../../interface/context.interface.js';
 import { Post } from '../../../model/Post.js';
 import { formPattern } from '../../../modules/forms/pattern.js';
-import { sendRestart } from '../../../reply/restart.js';
+import { sendRestart } from '../../../telegram/reply/restart.js';
 import { getKeyboardPatternList } from '../keyboard/pattern-list.js';
 
 export const handlerPatternDel = async (ctx: IBotContext): Promise<void> => {

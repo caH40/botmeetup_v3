@@ -2,7 +2,7 @@
 import { IBotContext } from '../../interface/context.interface.js';
 import { errorHandler } from '../../errors/error.js';
 import { keyboardMain } from './keyboard/main.js';
-import { sendReply } from '../../reply/reply.js';
+import { sendReply } from '../../telegram/reply/reply.js';
 
 export async function rideonMainMenu(ctx: IBotContext) {
   try {

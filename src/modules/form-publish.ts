@@ -1,6 +1,6 @@
 import { IBotContext } from '../interface/context.interface.js';
 import { Post } from '../model/Post.js';
-import { sendPosted } from '../reply/posted.js';
+import { sendPosted } from '../telegram/reply/posted.js';
 import { createPostData } from '../utils/postdata-create.js';
 import { getWeatherForActualPosts } from '../weather/weather-for-posts.js';
 import { formFinalPost } from './forms/form-final.js';

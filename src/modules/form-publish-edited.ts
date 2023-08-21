@@ -3,7 +3,7 @@ import { errorHandler } from '../errors/error.js';
 import { IBotContext } from '../interface/context.interface.js';
 import { Poll } from '../model/Poll.js';
 import { Post } from '../model/Post.js';
-import { sendPostedEdited } from '../reply/posted-edited.js';
+import { sendPostedEdited } from '../telegram/reply/posted-edited.js';
 
 import { createPostDataFromDB } from '../utils/postdata-create.js';
 import { getWeatherForActualPosts } from '../weather/weather-for-posts.js';

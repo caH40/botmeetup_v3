@@ -1,7 +1,7 @@
 import { Telegraf } from 'telegraf';
 
 import { IBotContext } from '../interface/context.interface.js';
-import { sendReply } from '../reply/reply.js';
+import { sendReply } from '../telegram/reply/reply.js';
 import { commandsMessage } from '../common/command.js';
 
 export const commandHelp = (bot: Telegraf<IBotContext>): void => {

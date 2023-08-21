@@ -1,7 +1,7 @@
 import { IBotContext } from '../../../../interface/context.interface.js';
 
 import { errorHandler } from '../../../../errors/error.js';
-import { sendRestart } from '../../../../reply/restart.js';
+import { sendRestart } from '../../../../telegram/reply/restart.js';
 import { mainMenu } from '../../../../modules/mainmenu.js';
 
 // обработка введенного текста в сцене Location

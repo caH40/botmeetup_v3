@@ -2,7 +2,7 @@ import { Chat } from 'telegraf/types';
 
 import { CHANNEL_ID } from '../config/dotenv.js';
 import { IBotContext } from '../interface/context.interface.js';
-import { inviteJoinToChannel } from '../reply/invite-join-channel.js';
+import { inviteJoinToChannel } from '../telegram/reply/invite-join-channel.js';
 
 import { errorHandler } from '../errors/error.js';
 

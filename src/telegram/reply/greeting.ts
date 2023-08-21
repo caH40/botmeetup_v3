@@ -1,4 +1,4 @@
-import { IBotContext } from '../interface/context.interface.js';
+import { IBotContext } from '../../interface/context.interface.js';
 import { sendUnknownError } from './unknown-error.js';
 
 function startMessage(channelName: string): string {

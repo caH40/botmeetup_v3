@@ -1,12 +1,10 @@
 // Данные из сообщения Телеграм
-import mongoose from 'mongoose';
 import pkg from 'mongoose';
 import { IPost } from '../interface/model/post.interface.js';
 
 const { Schema, model } = pkg;
 
 const postSchema = new Schema<IPost>({
-  botId: { type: mongoose.Schema.Types.ObjectId, ref: 'BotSetup' },
   date: { type: String },
   time: { type: String },
   leader: { type: String },

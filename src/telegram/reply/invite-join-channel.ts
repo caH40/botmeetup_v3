@@ -1,4 +1,4 @@
-import { IBotContext } from '../interface/context.interface.js';
+import { IBotContext } from '../../interface/context.interface.js';
 
 export const inviteJoinToChannel = async (
   ctx: IBotContext,

@@ -3,7 +3,7 @@ import { Telegraf } from 'telegraf';
 import { IBotContext } from '../../../../interface/context.interface.js';
 import { mainMenu } from '../../../../modules/mainmenu.js';
 import { regular } from '../../../../common/constants.js';
-import { sendRestart } from '../../../../reply/restart.js';
+import { sendRestart } from '../../../../telegram/reply/restart.js';
 import { errorHandler } from '../../../../errors/error.js';
 
 // обработка нажатия кнопки "Дата заезда"

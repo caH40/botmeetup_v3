@@ -4,7 +4,7 @@ import { errorHandler } from '../../../../errors/error.js';
 import { City } from '../../../../model/City.js';
 import { keyboardLocation } from './keyboard/location.keyboard.js';
 import { sceneLocationText as txt } from './text.js';
-import { sendReply } from '../../../../reply/reply.js';
+import { sendReply } from '../../../../telegram/reply/reply.js';
 
 // обработка введенного текста в сцене Location
 export async function handlerSceneLocation(ctx: IBotContext, text: string) {

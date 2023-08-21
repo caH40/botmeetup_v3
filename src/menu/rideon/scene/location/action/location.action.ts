@@ -2,7 +2,7 @@ import { Telegraf } from 'telegraf';
 
 import { IBotContext } from '../../../../../interface/context.interface.js';
 import { mainMenu } from '../../../../../modules/mainmenu.js';
-import { sendRestart } from '../../../../../reply/restart.js';
+import { sendRestart } from '../../../../../telegram/reply/restart.js';
 import { regular } from '../../../../../common/constants.js';
 
 // обработка нажатия кнопки выбор города, где будет старт заезда
