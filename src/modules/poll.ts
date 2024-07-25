@@ -32,15 +32,15 @@ export async function pollHandler(ctx: IBotContext) {
 
     // если был старт, отправляется соответствующее сообщение
     if (isLastUpdated) {
-      const firstName = ctx.pollAnswer.user.first_name;
+      const firstName = ctx.pollAnswer.user!.first_name;
       await missBikeRide(ctx, messageIdGroup, firstName);
 
       return;
     }
 
     // формирования массива pollUsers пользователей, проголосовавших "ЗА"
-    const userId = ctx.pollAnswer.user.id;
-    const username = ctx.pollAnswer.user.username;
+    const userId = ctx.pollAnswer.user!.id;
+    const username = ctx.pollAnswer.user!.username;
     const pollOption = ctx.pollAnswer.option_ids;
     const pollUsers = getPollUsers(pollDB.pollUsers, { userId, username }, pollOption);
 

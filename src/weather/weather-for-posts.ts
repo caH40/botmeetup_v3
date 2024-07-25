@@ -25,7 +25,7 @@ export async function getWeatherForActualPosts(): Promise<void> {
       const { lon, lat } = locationsWeather[indexCity];
       const weatherApi = await getWeatherFromApi(lon, lat);
       // если ответ от сервера не 200, то переход к следующему запросу
-      if (weatherApi.status !== 200) {
+      if (!weatherApi || weatherApi.status !== 200) {
         continue;
       }
 

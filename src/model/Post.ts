@@ -1,8 +1,6 @@
 // Данные из сообщения Телеграм
-import pkg from 'mongoose';
+import { Schema, model } from 'mongoose';
 import { IPost } from '../interface/model/post.interface.js';
-
-const { Schema, model } = pkg;
 
 const postSchema = new Schema<IPost>({
   date: { type: String },
