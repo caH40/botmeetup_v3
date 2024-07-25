@@ -7,7 +7,7 @@ import { getWeatherForActualPosts } from '../weather/weather-for-posts.js';
 export function timers(bot: IMixContext) {
   try {
     const millisecondsInHour = 3600000;
-    const millisecondsIMinute = 60000;
+    const millisecondsInMinute = 60000;
 
     setInterval(async () => {
       // получение погода из API для актуальных объявлений о велозаездах
@@ -20,7 +20,7 @@ export function timers(bot: IMixContext) {
     setInterval(async () => {
       //обновление всех актуальных объявлений в канале
       await updatePosts(bot);
-    }, millisecondsIMinute);
+    }, millisecondsInMinute);
   } catch (error) {
     errorHandler(error);
   }
