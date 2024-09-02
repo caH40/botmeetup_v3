@@ -8,6 +8,10 @@ export const getWeatherFromApi = async (
   lat: number
 ): Promise<AxiosResponse | null> => {
   try {
+    if (!API_KEY_WEATHER) {
+      throw new Error('Не получен API_KEY для погоды!');
+    }
+
     const proxyServer = process.env.PROXY;
     if (!proxyServer) {
       throw new Error('Не получен адрес прокси-сервера!');
