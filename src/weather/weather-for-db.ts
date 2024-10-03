@@ -8,7 +8,7 @@ export const getWeatherForDB = (daily: IWeatherDaily[], city: ICities) => {
   // quantityDays количество дней с погодой получаемых в daily
   const quantityDays = 8;
   for (let indexDay = 0; indexDay < quantityDays; indexDay++) {
-    const weatherDate = new Date(daily[indexDay].dt * 1000).toLocaleDateString();
+    const weatherDate = new Date(daily[indexDay].dt * 1000).toLocaleDateString('ru-RU');
     const weatherTempDay = daily[indexDay].temp.day;
     const weatherTempMorn = daily[indexDay].temp.morn;
     const weatherTempEve = daily[indexDay].temp.eve;
@@ -19,7 +19,7 @@ export const getWeatherForDB = (daily: IWeatherDaily[], city: ICities) => {
     const weatherDescription = weatherInDay ? weatherInDay.description : 'нет описания погоды';
 
     const dayWeather: number = new Date(daily[indexDay].dt * 1000).getDay();
-    const dateUpdate = new Date().toLocaleString();
+    const dateUpdate = new Date().toLocaleString('ru-RU');
 
     const dayWeatherForDB: IWeatherWeek = {
       dateUpdate: dateUpdate,

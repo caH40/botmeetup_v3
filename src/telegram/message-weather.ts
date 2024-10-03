@@ -13,7 +13,7 @@ export const updateMessageWeather = async (
       GROUP_ID,
       post,
       'привет!',
-      formWeatherStr + `\nUpdate: ${new Date().toLocaleString()}`,
+      formWeatherStr + `\nUpdate: ${new Date().toLocaleString('ru-RU')}`,
       {
         parse_mode: 'HTML',
       }

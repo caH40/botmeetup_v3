@@ -28,7 +28,7 @@ export const createDatesArray = (): string[] => {
     const currentDay: Date = new Date(Date.now() + millisecondsInDay * i);
     const dayNumber: number = currentDay.getDay();
 
-    dayArr.push(`${weekdays.get(dayNumber)}, ${currentDay.toLocaleDateString('ru')}`);
+    dayArr.push(`${weekdays.get(dayNumber)}, ${currentDay.toLocaleDateString('ru-RU')}`);
   }
 
   return dayArr;
