@@ -2,6 +2,7 @@ import { Scenes } from 'telegraf';
 
 import { InlineKeyboardMarkup } from 'telegraf/types';
 
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export interface MySceneSession extends Scenes.SceneSessionData {
   // will be available under `ctx.scene.session.mySceneSessionProp`
   // mySceneSessionProp: number;

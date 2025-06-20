@@ -41,13 +41,10 @@ bot.command('post', async (ctx) => await updatePosts(ctx));
 bot.on('poll_answer', async (ctx) => await pollHandler(ctx));
 
 // обработка команд
-for (const command of commands(bot)) {
-  command;
-}
+commands(bot);
+
 // обработка экшенов
-for (const action of actions(bot)) {
-  action;
-}
+actions(bot);
 
 timers(bot);
 

@@ -26,6 +26,8 @@ export const getWeatherFromApi = async (
 
     return response;
   } catch (error) {
+    console.log(error); // eslint-disable-line
+
     return null;
   }
 };

@@ -16,15 +16,16 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@eslint/js": "^9.29.0",
     "@types/dotenv": "^8.2.0",
     "@types/node": "^20.11.19",
-    "@typescript-eslint/eslint-plugin": "^6.21.0",
-    "@typescript-eslint/parser": "^6.21.0",
-    "eslint": "^8.56.0",
+    "eslint": "^9.29.0",
+    "globals": "^16.2.0",
     "nodemon": "^3.0.3",
     "rimraf": "^5.0.5",
     "ts-node": "^10.9.2",
-    "typescript": "^5.7.3"
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.34.1"
   },
   "dependencies": {
     "axios": "^1.7.2",
