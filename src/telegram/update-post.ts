@@ -12,6 +12,7 @@ export async function updatePostChannel(
 ): Promise<void> {
   const pollData = createPostDataFromDB(post, pollQuantity);
   const formPostString = formFinalPost(pollData);
+
   await ctx.telegram
     .editMessageCaption(CHANNEL_ID, post.messageId, 'привет!', formPostString, {
       parse_mode: 'HTML',
