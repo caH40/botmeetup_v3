@@ -15,6 +15,7 @@ import { updatePosts } from './modules/uptdates/post.js';
 import { timers } from './modules/timer.js';
 import { serverApp, port } from './server/express.js';
 import { TGeo } from './interface/index.types.js';
+import { getWeatherForActualPosts } from './weather/weather-for-posts.js';
 
 // Инициализация глобальной переменной для сохранения данных по гео локаций старта и погоды, выбранных пользователями и полученных на сервере через REST запрос.
 export const temporaryStorage = {
@@ -40,7 +41,8 @@ bot.use(controlForwardMessage);
 bot.use(stage.middleware());
 
 // для тестирования
-bot.command('weather', async (ctx) => await weatherUpdate(ctx));
+bot.command('weather', async () => await getWeatherForActualPosts());
+// bot.command('weather', async (ctx) => await weatherUpdate(ctx));
 bot.command('post', async (ctx) => await updatePosts(ctx));
 
 // контроль апдейтов голосования

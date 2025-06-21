@@ -43,5 +43,5 @@ export const publishForm = async (ctx: IBotContext) => {
 
   await post.save();
 
-  // await getWeatherForActualPosts();
+  await getWeatherForActualPosts();
 };

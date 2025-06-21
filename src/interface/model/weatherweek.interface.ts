@@ -1,14 +1,21 @@
-import { ICities } from './cities.interface.js';
+import { Document, Types } from 'mongoose';
+
+export type TWeatherWeekDocument = IWeatherWeek & Document;
 
 export interface IWeatherWeek {
-  dateUpdate: string;
-  date: string;
-  dateString?: string;
-  city: ICities;
-  tempMorn: number;
-  tempDay: number;
-  tempEve: number;
+  post: Types.ObjectId; // Ссылка на документ Объявления о велозаезде.
+  date: Date;
+  temp: number;
   humidity: number;
-  windSpeed: number;
-  desc: string;
+  pressure: number;
+  wind: { speed: number; deg: number; gust: number };
+  clouds: { all: number };
+  weather: {
+    id: number;
+    main: string;
+    description: string;
+    icon: string;
+  };
+  createAt?: Date;
+  updateAt?: Date;
 }

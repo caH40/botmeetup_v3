@@ -7,6 +7,7 @@ export async function saveWeatherWeek(arrayWeather: IWeatherWeek[]) {
   try {
     // очистка коллекции от документов
     await WeatherWeek.deleteMany();
+
     // сохранение всех документов из массива
     await WeatherWeek.insertMany(arrayWeather);
   } catch (error) {
