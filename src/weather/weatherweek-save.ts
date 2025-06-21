@@ -2,14 +2,21 @@ import { errorHandler } from '../errors/error.js';
 import { IWeatherWeek } from '../interface/model/weatherweek.interface.js';
 import { WeatherWeek } from '../model/WeatherWeek.js';
 
-// сохранение/обновление данных погоды в актуальных объявлениях о заездах
-export async function saveWeatherWeek(arrayWeather: IWeatherWeek[]) {
+/**
+ * Создание/обновление данных о погоде в базе данных.
+ */
+export async function upsertWeatherWeek(arrayWeather: IWeatherWeek[]): Promise<void> {
   try {
-    // очистка коллекции от документов
-    await WeatherWeek.deleteMany();
-
-    // сохранение всех документов из массива
-    await WeatherWeek.insertMany(arrayWeather);
+    // Сохранение всех документов из массива.
+    await WeatherWeek.bulkWrite(
+      arrayWeather.map((doc) => ({
+        updateOne: {
+          filter: { _id: doc.post },
+          update: { $set: doc },
+          upsert: true,
+        },
+      }))
+    );
   } catch (error) {
     errorHandler(error);
   }

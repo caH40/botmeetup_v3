@@ -3,6 +3,7 @@ import { Schema, model } from 'mongoose';
 import { IPost } from '../interface/model/post.interface.js';
 
 const postSchema = new Schema<IPost>({
+  startDate: { type: Date },
   date: { type: String },
   time: { type: String },
   leader: { type: String },

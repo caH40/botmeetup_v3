@@ -1,9 +1,9 @@
-import { saveWeatherWeek } from './weatherweek-save.js';
+import { upsertWeatherWeek } from './weatherweek-save.js';
 import { errorHandler } from '../errors/error.js';
 import { getWeatherFromApi } from '../api/openweather.js';
 import { IWeatherWeek } from '../interface/model/weatherweek.interface.js';
 import { getWeatherLocationCoords } from './weather-coords.js';
-import { createWeatherObjectForDB } from '../utils/weather.js';
+import { createCurrentWeatherForDB } from '../utils/weather.js';
 
 /**
  * 1. Получение координат всех мест погоды из актуальных Объявлений.
@@ -16,7 +16,7 @@ export async function getWeatherForActualPosts(): Promise<void> {
     const weatherLocationCoords = await getWeatherLocationCoords();
 
     // если нет городов для мониторинга погоды, то выход из функции
-    if (!weatherLocationCoords || !weatherLocationCoords.length) {
+    if (!weatherLocationCoords.length) {
       return;
     }
 
@@ -26,19 +26,26 @@ export async function getWeatherForActualPosts(): Promise<void> {
     // запрос погоды для актуальных объявлений о велозаездах
     for (const item of weatherLocationCoords) {
       const [lat, lon] = item.weatherLocation.coords;
-      const weatherApi = await getWeatherFromApi({ lon, lat, postId: item._id });
+      const weekWeatherFromApi = await getWeatherFromApi({ lon, lat, postId: item._id });
+
       // Переход к следующему запросу если нет данных о погоде.
-      if (!weatherApi) {
+      if (!weekWeatherFromApi) {
         continue;
       }
 
-      const weather = createWeatherObjectForDB(weatherApi);
+      const weather = createCurrentWeatherForDB({
+        weather: weekWeatherFromApi,
+        startDate: item.startDate,
+      });
 
-      weathersForDB.push(...weather);
+      // Если есть прогноз погоды для startDate, то добавляем в массив обновления.
+      if (weather) {
+        weathersForDB.push(weather);
+      }
     }
 
-    //обновление данных о погоде в базе данных, если нет, то создает новую коллекцию
-    await saveWeatherWeek(weathersForDB);
+    // Создание/обновление данных о погоде в базе данных.
+    await upsertWeatherWeek(weathersForDB);
   } catch (error) {
     errorHandler(error);
   }

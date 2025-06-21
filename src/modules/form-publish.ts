@@ -2,6 +2,7 @@ import { IBotContext } from '../interface/context.interface.js';
 import { Post } from '../model/Post.js';
 import { sendPosted } from '../telegram/reply/posted.js';
 import { createPostData } from '../utils/postdata-create.js';
+import { parseRussianDate } from '../utils/time-left.js';
 import { getWeatherForActualPosts } from '../weather/weather-for-posts.js';
 import { formFinalPost } from './forms/form-final.js';
 
@@ -26,9 +27,13 @@ export const publishForm = async (ctx: IBotContext) => {
   //номер сообщения в канале
   const messageId = messageChannel.message_id;
 
+  const date = ctx.session.dateStart;
+  const time = ctx.session.time;
+
   const post = new Post({
-    date: ctx.session.dateStart,
-    time: ctx.session.time,
+    date,
+    time,
+    startDate: parseRussianDate(date, time),
     leader: ctx.session.leader,
     userId: ctx.session.userId,
     startLocation: ctx.session.startLocation,

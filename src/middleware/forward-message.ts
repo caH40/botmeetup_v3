@@ -12,25 +12,30 @@ export const controlForwardMessage = async (ctx: IBotContext, next: () => void) 
   }
   // id самого телеграмма
   const telegramId = 777000;
+
   // юзер id в телеграмм автора сообщения
   const userId = ctx.message.from.id;
+
   // если это не переадресация с id telegram, то выход из middleware
   if (userId !== telegramId) {
     return next();
   }
 
-  // обрабатываются только сообщения от telegram, то есть когда telegram создает
+  // Обрабатываются только сообщения от telegram, то есть когда telegram создает
   // дискуссию к посту в канале объявлений о велозаездах
-
   const groupId = ctx.message.chat.id;
   const messageId = (ctx.message as Message.CommonMessage).forward_from_message_id;
   const messageIdGroup = ctx.message.message_id;
 
-  const postDB = await Post.findOneAndUpdate({ messageId }, { $set: { messageIdGroup } });
+  const postDB = await Post.findOneAndUpdate(
+    { messageId },
+    { $set: { messageIdGroup } }
+  ).lean();
   // выход, если Объявление о велозаезде не найдено в БД
   if (!postDB) {
     return next();
   }
+
   const { _id, date, locationWeather } = postDB;
 
   // обработчик сообщения о голосовании для дискуссионной группы

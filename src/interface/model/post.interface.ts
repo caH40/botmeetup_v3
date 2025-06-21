@@ -5,6 +5,7 @@ export interface IPost {
   _id?: Types.ObjectId;
 
   botId: Types.ObjectId;
+  startDate: Date;
   date: string;
   time: string;
   leader: string;

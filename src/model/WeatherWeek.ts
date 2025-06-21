@@ -1,6 +1,8 @@
-import pkg from 'mongoose';
-import { TWeatherWeekDocument } from '../interface/model/weatherweek.interface.js';
 import mongoose from 'mongoose';
+import pkg from 'mongoose';
+
+import { TWeatherWeekDocument } from '../interface/model/weatherweek.interface.js';
+import { millisecondsInWeek } from '../common/constants.js';
 
 const { Schema, model } = pkg;
 
@@ -24,5 +26,8 @@ const weatherWeekSchema = new Schema<TWeatherWeekDocument>(
     timestamps: true,
   }
 );
+
+// TTL индекс по updatedAt: удаление через неделю после обновления.
+weatherWeekSchema.index({ updatedAt: 1 }, { expireAfterSeconds: millisecondsInWeek });
 
 export const WeatherWeek = model<TWeatherWeekDocument>('WeatherWeeks', weatherWeekSchema);
