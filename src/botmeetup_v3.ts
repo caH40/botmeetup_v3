@@ -15,11 +15,17 @@ import { pollHandler } from './modules/poll.js';
 import { weatherUpdate } from './modules/uptdates/weather-update.js';
 import { updatePosts } from './modules/uptdates/post.js';
 import { timers } from './modules/timer.js';
+import { serverApp, port } from './server/express.js';
 
 // запуск mongoose подключения к БД
 initMongodb();
 
-const bot = new Telegraf<IBotContext>(BOT_TOKEN);
+serverApp.listen(port, () => {
+  // eslint-disable-next-line no-console
+  console.log(`Server listening on port ${port}`);
+});
+
+export const bot = new Telegraf<IBotContext>(BOT_TOKEN);
 
 const stage = new Scenes.Stage<IBotContext>([
   locationScene,

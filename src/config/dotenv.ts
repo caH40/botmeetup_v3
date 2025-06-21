@@ -17,4 +17,18 @@ export const OWNER_CHANNEL_ID = +parsed.OWNER_CHANNEL_ID;
 export const NODE_ENV: string | undefined = parsed?.NODE_ENV;
 export const API_KEY_WEATHER: string = parsed.API_KEY_WEATHER;
 
+export const SERVER_PORT = process.env.SERVER_PORT;
+if (!SERVER_PORT) {
+  throw new Error('SERVER_PORT не задан в .env');
+}
+export const REST_START_URL = process.env.REST_START_URL;
+if (!REST_START_URL) {
+  throw new Error('REST_START_URL не задан в .env');
+}
+
+export const serverData = {
+  SERVER_PORT,
+  REST_START_URL,
+};
+
 export const { BOT_TOKEN, MONGODB } = parsed;

@@ -1,4 +1,5 @@
 import { InlineKeyboardMarkup } from 'telegraf/types';
+import { serverData } from '../../../config/dotenv.js';
 
 export const keyboardMain = (): InlineKeyboardMarkup => ({
   inline_keyboard: [
@@ -7,7 +8,12 @@ export const keyboardMain = (): InlineKeyboardMarkup => ({
       { text: 'Время старта', callback_data: 'meetTime' },
     ],
     [
-      { text: 'Место старта', callback_data: 'meetLocation' },
+      {
+        text: 'Место старта',
+        web_app: {
+          url: serverData.REST_START_URL,
+        },
+      },
       { text: 'Погода', callback_data: 'meetWeather' },
     ],
     [
