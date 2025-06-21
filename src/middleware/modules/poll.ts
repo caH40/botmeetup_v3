@@ -8,7 +8,7 @@ export const createMessagePoll = async (
   ctx: IBotContext,
   groupId: number,
   messageIdGroup: number,
-  _id: Types.ObjectId,
+  postId: Types.ObjectId,
   next: () => void
 ) => {
   // отправляем голосования в группу дискуссий
@@ -18,5 +18,5 @@ export const createMessagePoll = async (
     return next();
   }
   // создание документа Poll в БД
-  await Poll.create({ postId: _id, poll });
+  await Poll.create({ postId, poll });
 };
