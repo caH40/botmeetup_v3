@@ -16,8 +16,8 @@ import { getActionsTimes } from '../menu/rideon/action/sub/time-sub.js';
 import { getActionDateStart } from '../menu/rideon/action/sub/date-start.js';
 import { getActionDistances } from '../menu/rideon/action/sub/distance-sub.js';
 import { getActionSpeeds } from '../menu/rideon/action/sub/speed-sub.js';
-import { getActionLocationStart } from '../menu/rideon/scene/location/action/location.action.js';
-import { getActionLocationWeatherStart } from '../menu/rideon/scene/location_weather/action/location_weather.action.js';
+// import { getActionLocationStart } from '../menu/rideon/scene/location/action/location.action.js';
+// import { getActionLocationWeatherStart } from '../menu/rideon/scene/location_weather/action/location_weather.action.js';
 import { getActionEditFromPreview } from '../menu/rideon/action/sub/edit.js';
 import { getActionPublication } from '../menu/rideon/action/sub/publication.js';
 import { getActionPatternGet } from '../menu/rideon/action/sub/pattern-get.js';
@@ -67,6 +67,6 @@ const getActionRideonSub = (bot: Telegraf<IBotContext>): void[] => [
 export const actions = (bot: Telegraf<IBotContext>): void[] => [
   ...getActionRideonMain(bot),
   ...getActionRideonSub(bot),
-  getActionLocationStart(bot), // action выбора города, где будет старт заезда
-  getActionLocationWeatherStart(bot), // action выбора города, где будет мониториться погода
+  // getActionLocationStart(bot), // action выбора города, где будет старт заезда
+  // getActionLocationWeatherStart(bot), // action выбора города, где будет мониториться погода
 ];

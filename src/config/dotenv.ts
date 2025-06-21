@@ -21,14 +21,14 @@ export const SERVER_PORT = process.env.SERVER_PORT;
 if (!SERVER_PORT) {
   throw new Error('SERVER_PORT не задан в .env');
 }
-export const REST_START_URL = process.env.REST_START_URL;
-if (!REST_START_URL) {
+export const REST_BASE_URL = process.env.REST_BASE_URL;
+if (!REST_BASE_URL) {
   throw new Error('REST_START_URL не задан в .env');
 }
 
 export const serverData = {
   SERVER_PORT,
-  REST_START_URL,
+  REST_BASE_URL,
 };
 
 export const { BOT_TOKEN, MONGODB } = parsed;

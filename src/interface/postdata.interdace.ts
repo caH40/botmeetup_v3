@@ -1,11 +1,13 @@
 export interface IPostData {
   description?: string;
-  location?: string;
+  locationName?: string;
+  locationCoords?: [number, number];
   dateStart?: string;
   time?: string;
   distance?: string;
   speed?: string;
-  locationWeather?: string;
+  locationWeatherName?: string;
+  locationWeatherCoords?: [number, number];
   leader?: string;
   pollQuantity?: string;
   tempDay?: string;

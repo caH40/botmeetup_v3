@@ -11,6 +11,7 @@ export const getActionPublication = (bot: Telegraf<IBotContext>): void => {
   bot.action('publication', async (ctx) => {
     //проверка на заполненность всех полей объявления, краткое описание заезда может не заполняться
     const postData = createPostData(ctx);
+
     const finalPost = formFinalPost(postData);
     if (finalPost.includes('---') || !ctx.session.pictureId) {
       await ctx.deleteMessage();

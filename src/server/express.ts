@@ -10,6 +10,6 @@ const port = serverData.SERVER_PORT;
 serverApp.use(cors());
 serverApp.use(express.json());
 
-serverApp.post('/', getWeatherGeo);
+serverApp.post('/:entity', getWeatherGeo);
 
 export { serverApp, port };

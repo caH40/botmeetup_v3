@@ -9,13 +9,13 @@ export function formFinalPost(postData: IPostData) {
     const humidity = `${postData.humidity ?? '-'}%`;
     const descriptionWeather = `${postData.descriptionWeather ?? '-'}`;
     const weatherStr = `${tempDay}, ${humidity}, ${descriptionWeather};`;
-    const weatherTitle = `<b>Погода (${postData.locationWeather ?? '---'}):</b>`;
+    const weatherTitle = `<b>Погода (${postData.locationWeatherName ?? '---'}):</b>`;
 
     // время до старта
     const timeLeft = getTimeLeft(postData.dateStart, postData.time);
 
     const descriptionStr = `${postData.description ?? 'Детали заезда:'}\n`;
-    const locationStr = `<b>Место старта:</b> ${postData.location ?? '---'};\n`;
+    const locationStr = `<b>Место старта:</b> ${postData.locationName ?? '---'};\n`;
     const dateStartStr = `<b>Дата заезда:</b> ${postData.dateStart ?? '---'};\n`;
     const timeStr = `<b>Время старта:</b> ${postData.time ?? '---'};\n`;
     const timeLeftStr = `<b>Осталось до старта:</b> ${timeLeft ?? '-'};\n`;

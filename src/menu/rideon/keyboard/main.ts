@@ -11,10 +11,16 @@ export const keyboardMain = (): InlineKeyboardMarkup => ({
       {
         text: 'Место старта',
         web_app: {
-          url: serverData.REST_START_URL,
+          url: serverData.REST_BASE_URL + 'start',
         },
       },
-      { text: 'Погода', callback_data: 'meetWeather' },
+      {
+        text: 'Погода',
+        web_app: {
+          url: serverData.REST_BASE_URL + 'weather',
+        },
+      },
+      // { text: 'Погода', callback_data: 'meetWeather' },
     ],
     [
       { text: 'Дистанция, км', callback_data: 'meetDistance' },

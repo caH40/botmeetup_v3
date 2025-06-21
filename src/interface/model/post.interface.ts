@@ -8,8 +8,10 @@ export interface IPost {
   time: string;
   leader: string;
   userId: string;
-  locationStart: string;
-  locationWeather: string;
+  locationName: string;
+  locationCoords: [number, number];
+  locationWeatherName: string;
+  locationWeatherCoords: [number, number];
   distance: string;
   speed: string;
   photoId: string;

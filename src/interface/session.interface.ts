@@ -19,8 +19,10 @@ export interface SessionData extends Scenes.SceneSession<MySceneSession> {
   time: string;
   distance: string;
   speed: string;
-  location: string;
-  locationWeather: string;
+  locationName: string;
+  locationWeatherName: string;
+  locationCoords: [number, number];
+  locationWeatherCoords: [number, number];
   description: string;
   pictureId: string;
   leader: string;
