@@ -1,4 +1,5 @@
 import { Types } from 'mongoose';
+import { TGeoCoords } from '../index.types';
 
 export interface IPost {
   _id?: Types.ObjectId;
@@ -8,10 +9,14 @@ export interface IPost {
   time: string;
   leader: string;
   userId: string;
-  locationName: string;
-  locationCoords: [number, number];
-  locationWeatherName: string;
-  locationWeatherCoords: [number, number];
+  startLocation: {
+    name: string;
+    coords: TGeoCoords;
+  };
+  weatherLocation: {
+    name: string;
+    coords: TGeoCoords;
+  };
   distance: string;
   speed: string;
   photoId: string;

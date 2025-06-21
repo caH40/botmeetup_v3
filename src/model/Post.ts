@@ -7,8 +7,14 @@ const postSchema = new Schema<IPost>({
   time: { type: String },
   leader: { type: String },
   userId: { type: String },
-  locationStart: { type: String },
-  locationWeather: { type: String },
+  startLocation: {
+    name: { type: String },
+    coords: [Number, Number],
+  },
+  weatherLocation: {
+    name: { type: String },
+    coords: [Number, Number],
+  },
   distance: { type: String },
   speed: { type: String },
   photoId: { type: String },

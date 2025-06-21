@@ -23,8 +23,8 @@ export const getActionSummary = (bot: Telegraf<IBotContext>): void => {
     // Сохранение в сессию данных места старта.
     if (ctx.session?.start && locationName && locationStart?.coords) {
       // сохранение дистанции заезда в сессию
-      ctx.session.locationName = locationName;
-      ctx.session.locationCoords = locationStart.coords;
+      ctx.session.startLocation = { name: locationName, coords: locationStart.coords };
+
       // изменение кнопки (добавление отметки о заполнении)
       ctx.session.start.inline_keyboard[1][0].text = 'Место старта ✔️';
     }
@@ -35,8 +35,11 @@ export const getActionSummary = (bot: Telegraf<IBotContext>): void => {
     // Сохранение в сессию данных места погоды.
     if (ctx.session?.start && locationWeatherName && locationWeather?.coords) {
       // сохранение дистанции заезда в сессию
-      ctx.session.locationWeatherName = locationWeatherName;
-      ctx.session.locationWeatherCoords = locationWeather.coords;
+      ctx.session.weatherLocation = {
+        name: locationWeatherName,
+        coords: locationWeather.coords,
+      };
+
       // изменение кнопки (добавление отметки о заполнении)
       ctx.session.start.inline_keyboard[1][1].text = 'Погода ✔️';
     }

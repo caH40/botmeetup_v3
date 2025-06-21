@@ -1,13 +1,20 @@
+import { TGeoCoords } from './index.types';
+
 export interface IPostData {
   description?: string;
-  locationName?: string;
-  locationCoords?: [number, number];
+  startLocation?: {
+    name: string;
+    coords: TGeoCoords;
+  };
+  weatherLocation?: {
+    name: string;
+    coords: TGeoCoords;
+  };
   dateStart?: string;
   time?: string;
   distance?: string;
   speed?: string;
-  locationWeatherName?: string;
-  locationWeatherCoords?: [number, number];
+
   leader?: string;
   pollQuantity?: string;
   tempDay?: string;

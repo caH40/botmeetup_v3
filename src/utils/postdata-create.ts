@@ -6,14 +6,12 @@ import { IPostData } from '../interface/postdata.interdace.js';
 export const createPostData = (ctx: IBotContext): IPostData => {
   return {
     description: ctx.session.description,
-    locationName: ctx.session.locationName,
-    locationCoords: ctx.session.locationCoords,
+    startLocation: ctx.session.startLocation,
+    weatherLocation: ctx.session.weatherLocation,
     dateStart: ctx.session.dateStart,
     time: ctx.session.time,
     distance: ctx.session.distance,
     speed: ctx.session.speed,
-    locationWeatherName: ctx.session.locationWeatherName,
-    locationWeatherCoords: ctx.session.locationWeatherCoords,
     leader: ctx.session.leader,
   };
 };
@@ -21,14 +19,12 @@ export const createPostData = (ctx: IBotContext): IPostData => {
 export const createPostDataFromDB = (postDB: IPost, pollQuantity: number): IPostData => {
   return {
     description: postDB.description,
-    locationName: postDB.locationName,
-    locationCoords: postDB.locationCoords,
+    startLocation: postDB.startLocation,
+    weatherLocation: postDB.weatherLocation,
     dateStart: postDB.date,
     time: postDB.time,
     distance: postDB.distance,
     speed: postDB.speed,
-    locationWeatherName: postDB.locationWeatherName,
-    locationWeatherCoords: postDB.locationWeatherCoords,
     leader: postDB.leader,
     pollQuantity: String(pollQuantity),
     tempDay: postDB.tempDay,
