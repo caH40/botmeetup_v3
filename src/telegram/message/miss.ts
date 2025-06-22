@@ -9,6 +9,10 @@ export const missBikeRide = async (
   await ctx.telegram.sendMessage(
     GROUP_ID,
     `${firstName}, Вы опоздали с голосованием, заезд уже состоялся!`,
-    { reply_to_message_id: messageIdGroup }
+    {
+      reply_parameters: {
+        message_id: messageIdGroup,
+      },
+    }
   );
 };

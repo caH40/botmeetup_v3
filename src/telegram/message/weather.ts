@@ -13,7 +13,7 @@ export const sendMessageWeather = async (
 
   const response = await ctx.telegram
     .sendMessage(groupId, message, {
-      reply_to_message_id: messageIdGroup,
+      reply_parameters: { message_id: messageIdGroup },
       parse_mode: 'HTML',
     })
     .catch((error) => errorHandler(error));

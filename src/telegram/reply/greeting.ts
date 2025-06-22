@@ -24,6 +24,6 @@ export const sendGreeting = async (
 
   await ctx.reply(`Привет ${userName} ! ${startMessage(channelName)}`, {
     parse_mode: 'HTML',
-    disable_web_page_preview: true,
+    link_preview_options: { is_disabled: true },
   });
 };

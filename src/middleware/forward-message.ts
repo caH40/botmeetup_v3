@@ -28,7 +28,18 @@ export const controlForwardMessage = async (ctx: IBotContext, next: () => void) 
   // Обрабатываются только сообщения от telegram, то есть когда telegram создает
   // дискуссию к посту в канале объявлений о велозаездах
   const groupId = ctx.message.chat.id;
-  const messageId = (ctx.message as Message.CommonMessage).forward_from_message_id;
+  // const messageId = (ctx.message as Message.CommonMessage).forward_from_message_id;
+  const getForwardedMessageId = (msg: Message.CommonMessage): number | undefined => {
+    if (msg.forward_origin) {
+      if ('message_id' in msg.forward_origin) {
+        return msg.forward_origin.message_id;
+      }
+    }
+    return undefined;
+  };
+
+  const messageId = getForwardedMessageId(ctx.message as Message.CommonMessage);
+
   const messageIdGroup = ctx.message.message_id;
 
   const postDB = await Post.findOneAndUpdate(
