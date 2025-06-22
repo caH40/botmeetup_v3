@@ -22,8 +22,8 @@ export const publishFormEdited = async (ctx: IBotContext) => {
         $set: {
           date: ctx.session.dateStart,
           time: ctx.session.time,
-          locationStart: ctx.session.location,
-          locationWeather: ctx.session.locationWeather,
+          startLocation: ctx.session.startLocation,
+          weatherLocation: ctx.session.weatherLocation,
           distance: ctx.session.distance,
           speed: ctx.session.speed,
           photoId: ctx.session.pictureId,

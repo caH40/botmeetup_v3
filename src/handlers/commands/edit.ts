@@ -20,6 +20,7 @@ export const handlerCommandEdit = async (ctx: IBotContext): Promise<void> => {
 
   for (let index = 0; index < postsDB.length; index++) {
     const keyboard = getKeyboardEdit(postsDB[index]._id, index, postLastIndex);
+
     const response = await ctx.reply(formPattern(postsDB[index], index), {
       parse_mode: 'HTML',
       ...keyboard,

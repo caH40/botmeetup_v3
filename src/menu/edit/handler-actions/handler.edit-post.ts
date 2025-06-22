@@ -11,7 +11,7 @@ export const handlerActionEditPost = async (
 ): Promise<void> => {
   const postId = cbqData.slice(16);
 
-  const postDB = await Post.findOne({ _id: postId, isLastUpdated: false });
+  const postDB = await Post.findOne({ _id: postId, isLastUpdated: false }).lean();
 
   if (postDB) {
     ctx.session.postId = postId;
@@ -19,8 +19,8 @@ export const handlerActionEditPost = async (
     ctx.session.dateStart = postDB.date;
     ctx.session.leader = postDB.leader;
     ctx.session.userId = +postDB.userId;
-    ctx.session.location = postDB.locationStart;
-    ctx.session.locationWeather = postDB.locationWeather;
+    ctx.session.startLocation = postDB.startLocation;
+    ctx.session.weatherLocation = postDB.weatherLocation;
     ctx.session.distance = postDB.distance;
     ctx.session.speed = postDB.speed;
     ctx.session.pictureId = postDB.photoId;

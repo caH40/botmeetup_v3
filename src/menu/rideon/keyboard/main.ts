@@ -20,7 +20,6 @@ export const keyboardMain = (): InlineKeyboardMarkup => ({
           url: serverData.REST_BASE_URL + 'weather',
         },
       },
-      // { text: 'Погода', callback_data: 'meetWeather' },
     ],
     [
       { text: 'Дистанция, км', callback_data: 'meetDistance' },
