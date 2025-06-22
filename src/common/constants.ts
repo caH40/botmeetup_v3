@@ -1,6 +1,10 @@
 import { IRegular } from '../interface/regular.interface.js';
 
-export const millisecondsInDay = 86400000;
+export const millisecondsInSecond = 1000;
+export const millisecondsInMinute = 60 * millisecondsInSecond;
+export const millisecondsInHour = 60 * millisecondsInMinute;
+export const millisecondsInDay = 24 * millisecondsInHour;
+export const millisecondsInWeek = 7 * millisecondsInDay;
 
 export const regular: IRegular = {
   dateStart: /dateStart_[А-Яа-я]{2}\.,\s{1}[0-9]{2}\.[0-9]{2}\.[0-9]{4}/,

@@ -1,19 +1,22 @@
-import { getLocationsWeather } from './locations.js';
-import { saveWeatherWeek } from './weatherweek-save.js';
+import { upsertWeatherWeek } from './weatherweek-save.js';
 import { errorHandler } from '../errors/error.js';
 import { getWeatherFromApi } from '../api/openweather.js';
-import { getWeatherForDB } from './weather-for-db.js';
-
-import { IWeatherDaily } from '../interface/weather.js';
 import { IWeatherWeek } from '../interface/model/weatherweek.interface.js';
+import { getWeatherLocationCoords } from './weather-coords.js';
+import { createCurrentWeatherForDB } from '../utils/weather.js';
 
+/**
+ * 1. Получение координат всех мест погоды из актуальных Объявлений.
+ * 2. Запрос погода для полученных координат из API погоды.
+ * 3. Обновление данных погоды для всех актуальных объявлений.
+ */
 export async function getWeatherForActualPosts(): Promise<void> {
   try {
     // получение городов из актуальных постов (заезды еще не состоялись) для мониторинга погоды
-    const locationsWeather = await getLocationsWeather();
+    const weatherLocationCoords = await getWeatherLocationCoords();
 
     // если нет городов для мониторинга погоды, то выход из функции
-    if (!locationsWeather || !locationsWeather.length) {
+    if (!weatherLocationCoords.length) {
       return;
     }
 
@@ -21,22 +24,28 @@ export async function getWeatherForActualPosts(): Promise<void> {
     const weathersForDB: IWeatherWeek[] = [];
 
     // запрос погоды для актуальных объявлений о велозаездах
-    for (let indexCity = 0; indexCity < locationsWeather.length; indexCity++) {
-      const { lon, lat } = locationsWeather[indexCity];
-      const weatherApi = await getWeatherFromApi(lon, lat);
-      // если ответ от сервера не 200, то переход к следующему запросу
-      if (!weatherApi || weatherApi.status !== 200) {
+    for (const item of weatherLocationCoords) {
+      const [lat, lon] = item.weatherLocation.coords;
+      const weekWeatherFromApi = await getWeatherFromApi({ lon, lat, postId: item._id });
+
+      // Переход к следующему запросу если нет данных о погоде.
+      if (!weekWeatherFromApi) {
         continue;
       }
 
-      const daily: IWeatherDaily[] = weatherApi.data.daily;
-      // формирование массива погоды за 8 дней для определенного города
-      const weatherForDB = getWeatherForDB(daily, locationsWeather[indexCity]);
-      weathersForDB.push(...weatherForDB);
+      const weather = createCurrentWeatherForDB({
+        weather: weekWeatherFromApi,
+        startDate: item.startDate,
+      });
+
+      // Если есть прогноз погоды для startDate, то добавляем в массив обновления.
+      if (weather) {
+        weathersForDB.push(weather);
+      }
     }
 
-    //обновление данных о погоде в базе данных, если нет, то создает новую коллекцию
-    await saveWeatherWeek(weathersForDB);
+    // Создание/обновление данных о погоде в базе данных.
+    await upsertWeatherWeek(weathersForDB);
   } catch (error) {
     errorHandler(error);
   }

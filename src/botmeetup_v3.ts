@@ -6,8 +6,6 @@ import { commands } from './commands/commands.js';
 import { initMongodb } from './database/mongodb.js';
 import { checkMember } from './middleware/member.js';
 import { actions } from './actions/actions.js';
-import { locationScene } from './menu/rideon/scene/location/location.scene.js';
-import { locationWeatherScene } from './menu/rideon/scene/location_weather/location_weather.scene.js';
 import { descriptionScene } from './menu/rideon/scene/description/description.scene.js';
 import { pictureScene } from './menu/rideon/scene/picture/picture.scene.js';
 import { controlForwardMessage } from './middleware/forward-message.js';
@@ -15,18 +13,26 @@ import { pollHandler } from './modules/poll.js';
 import { weatherUpdate } from './modules/uptdates/weather-update.js';
 import { updatePosts } from './modules/uptdates/post.js';
 import { timers } from './modules/timer.js';
+import { serverApp, port } from './server/express.js';
+import { TGeo } from './interface/index.types.js';
+
+// Инициализация глобальной переменной для сохранения данных по гео локаций старта и погоды, выбранных пользователями и полученных на сервере через REST запрос.
+export const temporaryStorage = {
+  start: new Map<number, TGeo>(),
+  weather: new Map<number, TGeo>(),
+};
 
 // запуск mongoose подключения к БД
 initMongodb();
 
-const bot = new Telegraf<IBotContext>(BOT_TOKEN);
+serverApp.listen(port, () => {
+  // eslint-disable-next-line no-console
+  console.log(`Server listening on port ${port}`);
+});
 
-const stage = new Scenes.Stage<IBotContext>([
-  locationScene,
-  locationWeatherScene,
-  descriptionScene,
-  pictureScene,
-]);
+export const bot = new Telegraf<IBotContext>(BOT_TOKEN);
+
+const stage = new Scenes.Stage<IBotContext>([descriptionScene, pictureScene]);
 
 bot.use(session());
 bot.use(checkMember);
@@ -40,10 +46,10 @@ bot.command('post', async (ctx) => await updatePosts(ctx));
 // контроль апдейтов голосования
 bot.on('poll_answer', async (ctx) => await pollHandler(ctx));
 
-// обработка команд
+// обработка команд.
 commands(bot);
 
-// обработка экшенов
+// обработка экшенов.
 actions(bot);
 
 timers(bot);

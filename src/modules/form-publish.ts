@@ -2,10 +2,13 @@ import { IBotContext } from '../interface/context.interface.js';
 import { Post } from '../model/Post.js';
 import { sendPosted } from '../telegram/reply/posted.js';
 import { createPostData } from '../utils/postdata-create.js';
+import { parseRussianDate } from '../utils/time-left.js';
 import { getWeatherForActualPosts } from '../weather/weather-for-posts.js';
 import { formFinalPost } from './forms/form-final.js';
 
-// публикация объявления в телеграм и сохранение в БД
+/**
+ * Публикация объявления в телеграм и сохранение в БД.
+ */
 export const publishForm = async (ctx: IBotContext) => {
   const postData = createPostData(ctx);
   const finalPost = formFinalPost(postData);
@@ -24,13 +27,17 @@ export const publishForm = async (ctx: IBotContext) => {
   //номер сообщения в канале
   const messageId = messageChannel.message_id;
 
+  const date = ctx.session.dateStart;
+  const time = ctx.session.time;
+
   const post = new Post({
-    date: ctx.session.dateStart,
-    time: ctx.session.time,
+    date,
+    time,
+    startDate: parseRussianDate(date, time),
     leader: ctx.session.leader,
     userId: ctx.session.userId,
-    locationStart: ctx.session.location,
-    locationWeather: ctx.session.locationWeather,
+    startLocation: ctx.session.startLocation,
+    weatherLocation: ctx.session.weatherLocation,
     distance: ctx.session.distance,
     speed: ctx.session.speed,
     photoId: ctx.session.pictureId,

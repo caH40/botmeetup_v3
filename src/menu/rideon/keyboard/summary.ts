@@ -9,10 +9,11 @@ export const getKeyboardSummary = (formEdit?: boolean): Markup.Markup<InlineKeyb
       Markup.button.callback('Редактировать', 'backToMain'),
     ],
   ];
+
   const keyboardFromEdit = [
     [
-      Markup.button.callback('Отправить в телеграм', 'publicationFromEdit'),
-      Markup.button.callback('Внести изменения', 'backToMain'),
+      Markup.button.callback('Сохранить изменения', 'publicationFromEdit'),
+      Markup.button.callback('Продолжить редактирование', 'backToMain'),
     ],
   ];
   const keyboard = formEdit ? keyboardFromEdit : keyboardFromCreate;

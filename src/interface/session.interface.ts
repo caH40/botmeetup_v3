@@ -1,6 +1,7 @@
 import { Scenes } from 'telegraf';
 
 import { InlineKeyboardMarkup } from 'telegraf/types';
+import { TGeoCoords } from './index.types';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export interface MySceneSession extends Scenes.SceneSessionData {
@@ -19,8 +20,14 @@ export interface SessionData extends Scenes.SceneSession<MySceneSession> {
   time: string;
   distance: string;
   speed: string;
-  location: string;
-  locationWeather: string;
+  startLocation: {
+    name: string;
+    coords: TGeoCoords;
+  };
+  weatherLocation: {
+    name: string;
+    coords: TGeoCoords;
+  };
   description: string;
   pictureId: string;
   leader: string;

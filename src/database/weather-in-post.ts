@@ -13,9 +13,9 @@ export const updateWeatherDB = async (
     { _id },
     {
       $set: {
-        tempDay: weatherCurrent ? weatherCurrent.tempDay : '',
+        tempDay: weatherCurrent ? weatherCurrent.temp : '',
         humidity: weatherCurrent ? weatherCurrent.humidity : '',
-        descriptionWeather: weatherCurrent ? weatherCurrent.desc : '',
+        descriptionWeather: weatherCurrent ? weatherCurrent.weather.description : '',
       },
     }
   ).catch((error) => errorHandler(error));
