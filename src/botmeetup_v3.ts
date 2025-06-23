@@ -10,8 +10,8 @@ import { descriptionScene } from './menu/rideon/scene/description/description.sc
 import { pictureScene } from './menu/rideon/scene/picture/picture.scene.js';
 import { controlForwardMessage } from './middleware/forward-message.js';
 import { pollHandler } from './modules/poll.js';
-import { weatherUpdate } from './modules/uptdates/weather-update.js';
-import { updatePosts } from './modules/uptdates/post.js';
+// import { weatherUpdate } from './modules/uptdates/weather-update.js';
+// import { updatePosts } from './modules/uptdates/post.js';
 import { timers } from './modules/timer.js';
 import { serverApp, port } from './server/express.js';
 import { TGeo } from './interface/index.types.js';
@@ -40,11 +40,23 @@ bot.use(controlForwardMessage);
 bot.use(stage.middleware());
 
 // для тестирования
-bot.command('weather', async (ctx) => await weatherUpdate(ctx));
-bot.command('post', async (ctx) => await updatePosts(ctx));
+// bot.command('weather', async (ctx) => await weatherUpdate(ctx));
+// bot.command('post', async (ctx) => await updatePosts(ctx));
 
 // контроль апдейтов голосования
 bot.on('poll_answer', async (ctx) => await pollHandler(ctx));
+
+// bot.command('test_link_preview', async (ctx) =>
+//   ctx.reply('<a href="https://bike-caucasus.ru">bike-caucasus</>', {
+//     parse_mode: 'HTML',
+//     link_preview_options: {
+//       is_disabled: false,
+//       url: 'https://bike-caucasus.ru',
+//       prefer_small_media: false,
+//       show_above_text: false,
+//     },
+//   })
+// );
 
 // обработка команд.
 commands(bot);
