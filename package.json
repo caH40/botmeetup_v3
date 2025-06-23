@@ -8,7 +8,8 @@
     "lint": "npx eslint ./src",
     "fix": "npx eslint ./src --fix",
     "dev": "npx nodemon",
-    "build": "rimraf build && tsc",
+    "env": "cp .env ./build/.env",
+    "build": "rimraf ./build && npx tsc && npm run env",
     "start": "npm run build && node build/botmeetup_v3.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
