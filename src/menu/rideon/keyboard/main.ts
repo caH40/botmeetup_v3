@@ -1,5 +1,5 @@
 import { InlineKeyboardMarkup } from 'telegraf/types';
-import { serverData } from '../../../config/dotenv.js';
+import { YANDEXMAP_FRONT_BASE_URL } from '../../../config/dotenv.js';
 
 export const keyboardMain = (): InlineKeyboardMarkup => ({
   inline_keyboard: [
@@ -11,13 +11,13 @@ export const keyboardMain = (): InlineKeyboardMarkup => ({
       {
         text: 'Место старта',
         web_app: {
-          url: serverData.REST_BASE_URL + 'start',
+          url: YANDEXMAP_FRONT_BASE_URL + 'start',
         },
       },
       {
         text: 'Погода',
         web_app: {
-          url: serverData.REST_BASE_URL + 'weather',
+          url: YANDEXMAP_FRONT_BASE_URL + 'weather',
         },
       },
     ],
