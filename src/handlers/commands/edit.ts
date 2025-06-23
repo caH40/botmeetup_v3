@@ -23,6 +23,9 @@ export const handlerCommandEdit = async (ctx: IBotContext): Promise<void> => {
 
     const response = await ctx.reply(formPattern(postsDB[index], index), {
       parse_mode: 'HTML',
+      link_preview_options: {
+        is_disabled: true,
+      },
       ...keyboard,
     });
 
