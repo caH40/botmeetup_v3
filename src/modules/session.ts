@@ -10,16 +10,14 @@ import { SessionData } from '../interface/session.interface.js';
 
 export async function initSession(ctx: IBotContext) {
   try {
-    const { title, linked_chat_id } = (await ctx.telegram.getChat(
-      CHANNEL_ID
-    )) as Chat.ChannelGetChat;
+    const chat = (await ctx.telegram.getChat(CHANNEL_ID)) as Chat.ChannelGetChat;
 
     // обнуление сессии
     ctx.session = <SessionData>{};
 
     ctx.session.channelId = CHANNEL_ID;
-    ctx.session.channelName = title;
-    ctx.session.linkedChatId = linked_chat_id;
+    ctx.session.channelName = chat.username || chat.title;
+    ctx.session.linkedChatId = chat.linked_chat_id;
     ctx.session.messageDel = [];
 
     if (ctx.message) {
