@@ -11,13 +11,13 @@ export const keyboardMainForEdit = (): InlineKeyboardMarkup => ({
       {
         text: 'Место старта',
         web_app: {
-          url: YANDEXMAP_FRONT_BASE_URL + 'start',
+          url: YANDEXMAP_FRONT_BASE_URL + '/start',
         },
       },
       {
         text: 'Погода',
         web_app: {
-          url: YANDEXMAP_FRONT_BASE_URL + 'weather',
+          url: YANDEXMAP_FRONT_BASE_URL + '/weather',
         },
       },
     ],
